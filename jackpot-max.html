@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TREVOR FEVER 777 · TrevorWinsBig</title>
+<style>
+:root{
+  --bg:#0f212e;--panel:#1a2c38;--line:#2f4553;--muted:#b1bad3;--green:#00e701;--blue:#1475e1;
+  --jp:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo","Noto Sans JP",sans-serif;
+  --disp:Impact,"Arial Black","HelveticaNeue-CondensedBlack","sans-serif-black",sans-serif;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --emoji:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
+  --side:60px;--chat:300px;--top:60px;--tick:32px;--ctrl:78px;--pad:14px;
+  --rainbow:linear-gradient(90deg,#ff004c,#ffdd00,#00ff6a,#00d0ff,#a000ff,#ff004c);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none;background:var(--bg);color:#fff;font-family:var(--ui);-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit;touch-action:manipulation}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes hue{to{filter:hue-rotate(360deg)}}
+@keyframes rb{to{background-position:200% 0}}
+@keyframes blink{50%{opacity:.15}}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ================= SITE CHROME ================= */
+#topbar{position:fixed;top:0;left:0;right:0;height:var(--top);z-index:70;background:var(--panel);display:flex;align-items:center;gap:16px;padding:0 18px;box-shadow:0 4px 14px rgba(0,0,0,.5)}
+#topbar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--rainbow);opacity:0;transition:opacity .2s}
+body.fever #topbar::after{opacity:1;animation:hue .6s linear infinite}
+.logo{display:flex;align-items:center;gap:9px;font-weight:900;font-style:italic;font-size:23px;letter-spacing:-.5px;white-space:nowrap}
+.logo .chip{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff7b0,#ffd700 45%,#b8860b);color:#8a0000;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-style:normal;font-size:18px;box-shadow:0 0 0 2px #7a5200}
+.logo b{color:var(--green)}
+body.fever .logo{animation:hue .5s linear infinite}
+.nav{display:flex;gap:6px}
+.nav a{color:var(--muted);font-weight:700;font-size:14px;padding:8px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.nav a.on{background:var(--line);color:#fff}
+.wallet{margin:0 auto;display:flex;align-items:center;background:var(--bg);border-radius:6px;overflow:hidden;font-weight:700;transition:box-shadow .2s}
+.bal{padding:10px 14px;min-width:140px;display:flex;gap:8px;align-items:center;justify-content:flex-end;font-variant-numeric:tabular-nums}
+.bal .cur{width:16px;height:16px;border-radius:50%;background:var(--green);color:#05080a;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.bal.bump #balTxt{animation:bump .5s}
+@keyframes bump{30%{color:var(--green);text-shadow:0 0 12px var(--green)}}
+body.fever .wallet{box-shadow:0 0 22px rgba(0,231,1,.8)}
+.wbtn{background:var(--blue);padding:10px 14px;cursor:pointer}
+.vip{display:flex;flex-direction:column;gap:4px;font-size:11px;font-weight:700;color:var(--muted);min-width:110px}
+.vipbar{height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.vipbar i{display:block;height:100%;width:14%;background:linear-gradient(90deg,var(--green),#9dff8f);transition:width .6s}
+.icons{display:flex;gap:14px;align-items:center;color:var(--muted);font-size:17px}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--blue));display:flex;align-items:center;justify-content:center;color:#071824;font-weight:900;font-size:15px}
+
+#side{position:fixed;top:var(--top);bottom:var(--tick);left:0;width:var(--side);background:var(--panel);display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:12px;z-index:60}
+#side a{width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;opacity:.7}
+#side a.on{background:var(--line);opacity:1}
+
+#chat{position:fixed;top:var(--top);bottom:var(--tick);right:0;width:var(--chat);background:var(--panel);z-index:60;display:flex;flex-direction:column;border-left:1px solid var(--line)}
+body.fever #chat{animation:chatGlow .25s steps(2) infinite}
+@keyframes chatGlow{0%{box-shadow:inset 4px 0 0 #ff2fd0}50%{box-shadow:inset 4px 0 0 #00d0ff}}
+.chathead{display:flex;justify-content:space-between;align-items:center;padding:14px;font-weight:700;border-bottom:1px solid var(--line);font-size:14px}
+.online{font-size:12px;color:var(--muted);font-weight:600}
+.online i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:4px;box-shadow:0 0 6px var(--green)}
+.msgs{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:8px 10px;gap:6px}
+.m{flex:none;font-size:13px;line-height:1.35;color:#dfe5f2;background:rgba(15,33,46,.7);padding:6px 9px;border-radius:6px;animation:min .25s ease-out;overflow-wrap:anywhere}
+@keyframes min{from{opacity:0;transform:translateX(24px)}}
+.m b{margin-right:5px}.m .lv{margin-right:4px;font-size:12px}
+.m.hype{background:rgba(0,231,1,.13)}
+.m.rain{background:linear-gradient(90deg,#1475e1,#7b2ff7);color:#fff;font-weight:700;display:flex;align-items:center;gap:8px}
+.m.rain em{font-style:normal;color:#9dff8f}
+.m.rain button{margin-left:auto;background:var(--green);color:#05080a;border:none;border-radius:4px;padding:4px 10px;font-weight:800;cursor:pointer;white-space:nowrap}
+.chatin{display:flex;gap:6px;padding:10px;border-top:1px solid var(--line)}
+.chatin input{flex:1;min-width:0;background:var(--bg);border:2px solid var(--line);border-radius:4px;padding:8px;color:#fff;font:inherit;font-size:13px}
+.chatin button{background:var(--green);border:none;border-radius:4px;padding:0 12px;color:#05080a;font-weight:800}
+
+#main{position:fixed;top:var(--top);bottom:var(--tick);left:var(--side);right:var(--chat);padding:var(--pad);display:flex;flex-direction:column;gap:min(12px,var(--pad));container-type:inline-size}
+#controls{height:var(--ctrl);flex:none;background:var(--panel);border-radius:10px;display:flex;align-items:center;gap:16px;padding:0 16px;overflow:hidden}
+.tools{display:flex;gap:6px}
+.tools button{width:38px;height:38px;border-radius:6px;border:none;background:var(--bg);cursor:pointer;font-size:16px}
+.tools button.off{opacity:.35}
+.field{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;color:var(--muted)}
+.box{background:var(--bg);border:2px solid var(--line);border-radius:4px;padding:7px 10px;color:#fff;font-weight:700;font-size:15px;min-width:100px;font-variant-numeric:tabular-nums;white-space:nowrap;display:flex;align-items:center;gap:8px;transition:border-color .2s,box-shadow .2s}
+.box .mini{background:var(--line);border-radius:3px;padding:1px 6px;font-size:12px;color:var(--muted)}
+.box.hot{border-color:var(--green);box-shadow:0 0 14px rgba(0,231,1,.6)}
+.ladder{display:flex;gap:4px}
+.ladder span{background:var(--bg);border:2px solid var(--line);border-radius:4px;padding:7px 8px;font-weight:800;font-size:13px;color:var(--muted);transition:all .2s}
+.ladder span.on{border-color:var(--green);color:#05080a;background:var(--green);box-shadow:0 0 12px var(--green)}
+.gauge{width:130px;height:16px;background:var(--bg);border:2px solid var(--line);border-radius:8px;overflow:hidden;margin:6px 0}
+.gauge i{display:block;height:100%;width:0;background:var(--rainbow);background-size:200% 100%;animation:rb 1s linear infinite;transition:width .5s}
+.betbtn{margin-left:auto;background:var(--green);color:#05080a;font-weight:800;font-size:17px;border:none;border-radius:4px;padding:16px 46px;cursor:pointer;box-shadow:0 4px 0 #00a301;flex:none}
+.betbtn:disabled{opacity:.55;cursor:default}
+@container (max-width:980px){.field.opt{display:none}}
+@container (max-width:640px){.field.opt2{display:none}.betbtn{padding:16px 24px}}
+@container (max-width:480px){#controls{gap:10px;padding:0 12px}.tools{gap:4px}.tools button{width:36px;height:36px}.box{min-width:0;font-size:14px}.betbtn{padding:14px 16px;font-size:15px}}
+
+#tickerbar{position:fixed;left:0;right:0;bottom:0;height:var(--tick);z-index:70;background:var(--bg);border-top:1px solid var(--line);display:flex;align-items:center;overflow:hidden;white-space:nowrap;font-size:13px;color:var(--muted)}
+#tickerbar .live{background:var(--green);color:#05080a;font-weight:800;padding:0 10px;height:100%;display:flex;align-items:center;flex:none;z-index:1}
+#tickerbar .tw{flex:1;overflow:hidden}
+#tickerbar .track{display:inline-block;animation:marq 45s linear infinite;padding-left:14px}
+#tickerbar em{font-style:normal;color:var(--green);font-weight:700}
+#tickerbar .sep{margin:0 18px;color:var(--line)}
+#tickerbar .legal{flex:none;padding:0 12px;background:var(--panel);height:100%;display:flex;align-items:center;font-size:11px;z-index:1}
+
+@media (max-width:1180px){:root{--chat:0px}#chat{display:none}}
+@media (max-width:860px){:root{--side:0px}#side,.nav,.vip,.icons .ic,#tickerbar .legal{display:none}.logo{font-size:19px}.bal{min-width:100px}}
+@media (max-width:480px){#topbar{gap:10px;padding:0 12px}.wbtn{display:none}.logo{font-size:17px;gap:7px}.logo .chip{width:26px;height:26px;font-size:15px}.bal{min-width:0}}
+/* phone landscape: compact chrome so the game keeps its height */
+@media (max-height:520px){:root{--top:44px;--tick:0px;--ctrl:54px;--pad:6px}#tickerbar{display:none}.logo{font-size:17px}.logo .chip{width:24px;height:24px;font-size:14px}.bal,.wbtn{padding:6px 10px}.avatar{width:28px;height:28px;font-size:13px}.tools button{width:34px;height:34px}.box{padding:4px 8px}.field{gap:2px;font-size:11px}.ladder span{padding:4px 6px}.gauge{margin:3px 0}.betbtn{padding:10px 24px}}
+
+/* ================= GAME FRAME ================= */
+#gameframe{position:relative;flex:1;min-height:0;border-radius:10px;overflow:hidden;background:#000;container-type:size;box-shadow:0 0 0 2px var(--line)}
+#gameframe::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:5px;background:conic-gradient(#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:0;z-index:40;pointer-events:none;transition:opacity .2s}
+body.fever #gameframe::after{opacity:1;animation:hue .4s linear infinite}
+#huer,#shaker,#stage{position:absolute;inset:0}
+#stage{overflow:hidden}
+#huer.go{animation:hueFx 1.3s linear}
+@keyframes hueFx{from{filter:hue-rotate(0) saturate(1.7)}to{filter:hue-rotate(720deg) saturate(1.7)}}
+#shaker.shake{animation:shake .5s}
+#shaker.inv{filter:invert(1) hue-rotate(180deg)}
+@keyframes shake{0%,100%{transform:none}10%{transform:translate(calc(var(--p)*-14px),calc(var(--p)*8px)) rotate(calc(var(--p)*-1deg))}20%{transform:translate(calc(var(--p)*12px),calc(var(--p)*-10px)) rotate(calc(var(--p)*1deg))}30%{transform:translate(calc(var(--p)*-10px),calc(var(--p)*-6px))}40%{transform:translate(calc(var(--p)*10px),calc(var(--p)*10px))}55%{transform:translate(calc(var(--p)*-6px),calc(var(--p)*4px))}70%{transform:translate(calc(var(--p)*4px),calc(var(--p)*-3px))}85%{transform:translate(calc(var(--p)*-2px),calc(var(--p)*1px))}}
+.scene{position:absolute;inset:0;display:none;overflow:hidden}
+.scene.active{display:block;animation:enter .4s cubic-bezier(.2,1.4,.4,1)}
+@keyframes enter{from{transform:scale(1.7) rotate(-8deg);filter:blur(14px) brightness(3) saturate(3)}to{transform:none;filter:none}}
+
+.gtag{position:absolute;z-index:24;top:10px;font-size:11px;font-weight:700;padding:4px 8px;border-radius:4px;background:rgba(15,33,46,.78);color:var(--muted);pointer-events:none;white-space:nowrap}
+.gtag.l{left:10px}.gtag.r{right:10px}
+@container (max-width:600px){.gtag{display:none}}
+
+/* speed lines */
+#speed{position:absolute;inset:-20%;z-index:20;pointer-events:none;opacity:0;background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,255,255,.95) 0 .5deg,transparent .5deg 3.5deg);-webkit-mask:radial-gradient(circle at 50% 50%,transparent 22%,#000 60%);mask:radial-gradient(circle at 50% 50%,transparent 22%,#000 60%);transition:opacity .15s}
+#speed.on{opacity:.7;animation:speedJit .08s steps(1) infinite}
+@keyframes speedJit{50%{transform:rotate(1.4deg) scale(1.04)}}
+
+/* manga sfx words */
+#words{position:absolute;inset:0;z-index:25;pointer-events:none;overflow:hidden}
+.w{position:absolute;font-family:var(--jp);font-weight:900;white-space:nowrap;line-height:1;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:.45cqmin #1a0010;filter:drop-shadow(.5cqmin .5cqmin 0 #000) drop-shadow(0 0 1.2cqmin rgba(255,255,255,.7))}
+.w.pop{animation:wpop .8s cubic-bezier(.2,1.8,.4,1) forwards}
+@keyframes wpop{0%{transform:translate(-50%,-50%) rotate(var(--r)) scale(0)}25%{transform:translate(-50%,-50%) rotate(var(--r)) scale(1.25)}45%{transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}75%{opacity:1}100%{opacity:0;transform:translate(-50%,-75%) rotate(var(--r)) scale(1.05)}}
+.w.zoom{animation:wzoom .7s ease-in forwards}
+@keyframes wzoom{0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--r)) scale(.2)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) rotate(var(--r)) scale(3)}}
+
+/* anime cut-in */
+#cutin{position:absolute;left:-10%;right:-10%;top:28%;height:44%;z-index:26;display:none;overflow:hidden;background:#000;box-shadow:0 0 0 .8cqmin #fff,0 0 4cqmin 1cqmin rgba(255,255,255,.6)}
+#cutin.go{display:block;animation:cutin .8s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cutin{0%{transform:skewY(-6deg) translateX(110%)}14%{transform:skewY(-6deg) translateX(0)}80%{transform:skewY(-6deg) translateX(-4%)}100%{transform:skewY(-6deg) translateX(-125%)}}
+#cutin .bg{position:absolute;inset:0}
+#cutin.red .bg{background:linear-gradient(90deg,#300,#e00 50%,#300)}
+#cutin.blue .bg{background:linear-gradient(90deg,#001,#06f 50%,#001)}
+#cutin.green .bg{background:linear-gradient(90deg,#010,#0c4 50%,#010)}
+#cutin.gold .bg{background:linear-gradient(90deg,#420,#fc0 50%,#420)}
+#cutin .lines{position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.4) 0 3px,transparent 3px 40px),repeating-linear-gradient(90deg,rgba(255,255,255,.25) 0 2px,transparent 2px 67px);animation:lines .12s linear infinite}
+@keyframes lines{to{background-position:-80px 0,-134px 0}}
+#cutin .art{position:absolute;left:6%;top:0;bottom:0;width:58%;-webkit-mask:linear-gradient(90deg,#000 75%,transparent);mask:linear-gradient(90deg,#000 75%,transparent)}
+#cutin .art svg{width:100%;height:100%;display:block}
+#cutin .txt{position:absolute;right:9%;top:50%;transform:translateY(-50%) rotate(-4deg);font-family:var(--jp);font-weight:900;font-size:13cqmin;white-space:nowrap;background:linear-gradient(#fff,#fff 45%,#ffe600 55%,#ff8a00);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:.5cqmin #000;filter:drop-shadow(.6cqmin .6cqmin 0 #000);animation:txtShake .06s steps(2) infinite}
+@keyframes txtShake{50%{transform:translateY(-53%) rotate(-3deg)}}
+
+/* jackpot overlay */
+#jp{position:absolute;inset:0;z-index:29;display:none;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;text-align:center;overflow:hidden}
+#jp.show{display:flex;animation:jpFade 1.35s forwards}
+@keyframes jpFade{0%,85%{opacity:1}100%{opacity:0}}
+#jp::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(0,0,0,.6),transparent 62%)}
+#jp .burst{position:absolute;left:50%;top:50%;width:200cqmax;height:200cqmax;margin:-100cqmax 0 0 -100cqmax;background:repeating-conic-gradient(rgba(255,0,60,.55) 0 7.5deg,rgba(255,210,0,.55) 7.5deg 15deg,rgba(0,255,120,.5) 15deg 22.5deg,rgba(0,170,255,.55) 22.5deg 30deg,rgba(210,0,255,.55) 30deg 37.5deg);-webkit-mask:radial-gradient(circle,#000 8%,transparent 40%);mask:radial-gradient(circle,#000 8%,transparent 40%);animation:spin 1.4s linear infinite}
+#jp .kanji{position:relative;font-family:var(--jp);font-weight:900;font-size:min(16cqmin,12.5cqw);line-height:1.05;white-space:nowrap;background:linear-gradient(#fff 0,#fff6a0 30%,#ffd000 50%,#ff7a00 70%,#ff2a00);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:.6cqmin #5a0000;filter:drop-shadow(0 0 2cqmin #ff0) drop-shadow(0 1cqmin 0 #400);animation:kanjiIn .5s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes kanjiIn{0%{transform:scale(5) rotate(20deg);opacity:0}60%{opacity:1}100%{transform:none}}
+#jp .main{position:relative;font-family:var(--disp);font-size:15cqmin;line-height:1;background:var(--rainbow);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:.45cqmin #fff;animation:mainIn .45s .08s cubic-bezier(.2,1.8,.4,1) both,rb .5s linear infinite,ab .1s steps(2) infinite}
+@keyframes mainIn{from{transform:scale(0) rotate(-30deg)}to{transform:none}}
+@keyframes ab{0%{filter:drop-shadow(.9cqmin 0 0 rgba(255,0,255,.8)) drop-shadow(-.9cqmin .3cqmin 0 rgba(0,255,255,.8))}50%{filter:drop-shadow(-.9cqmin -.3cqmin 0 rgba(255,0,255,.8)) drop-shadow(.9cqmin 0 0 rgba(0,255,255,.8))}}
+#jp .tier{position:relative;margin-top:1.2cqmin;font-family:var(--disp);font-size:7.5cqmin;letter-spacing:.06em;padding:.05em .6em;border-radius:.3em;color:#fff;animation:tierIn .4s .25s cubic-bezier(.2,1.8,.4,1) both}
+@keyframes tierIn{from{transform:scale(0) rotate(10deg)}to{transform:none}}
+#jp.t1 .tier{background:linear-gradient(#ffe600,#ff8a00);color:#5a1a00;box-shadow:0 0 3cqmin #ff0}
+#jp.t2 .tier{background:linear-gradient(#ff5ce1,#a000ff);box-shadow:0 0 3cqmin #f0f}
+#jp.t3 .tier{background:linear-gradient(#5cf3ff,#0050ff);box-shadow:0 0 3cqmin #0ff}
+#jp.t4 .tier{background:var(--rainbow);background-size:200% 100%;box-shadow:0 0 4cqmin #fff;animation:tierIn .4s .25s cubic-bezier(.2,1.8,.4,1) both,rb .4s linear infinite}
+#jp .amt{position:relative;margin-top:1.4cqmin;font-family:"Courier New",monospace;font-weight:900;font-size:8.5cqmin;color:#8dff7a;background:#021a05;border:.5cqmin solid #0f0;border-radius:1cqmin;padding:0 .5em;text-shadow:0 0 1.5cqmin #0f0;box-shadow:0 0 3cqmin rgba(0,255,0,.6)}
+#jp .sub{position:relative;margin-top:1.2cqmin;font-family:var(--disp);font-size:4.5cqmin;color:#fff;text-shadow:0 0 1cqmin #f0f,0 .4cqmin 0 #000}
+
+/* transitions */
+#wipe{position:absolute;top:-10%;bottom:-10%;left:-30%;width:160%;z-index:34;pointer-events:none;transform:translateX(-140%) skewX(-18deg);background:repeating-linear-gradient(90deg,#ff004c 0 6%,#ffdd00 6% 12%,#00ff6a 12% 18%,#00d0ff 18% 24%,#a000ff 24% 30%)}
+#wipe.go{animation:wipe .44s cubic-bezier(.7,0,.3,1)}
+@keyframes wipe{from{transform:translateX(-140%) skewX(-18deg)}to{transform:translateX(140%) skewX(-18deg)}}
+#flash{position:absolute;inset:0;z-index:35;pointer-events:none;opacity:0;background:#fff}
+#flash.go{animation:flash .35s ease-out}
+@keyframes flash{from{opacity:1}to{opacity:0}}
+
+/* start + replay */
+#start{position:absolute;inset:0;z-index:45;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.6cqmin;text-align:center;padding:3cqmin;background:radial-gradient(circle at 50% 40%,rgba(110,0,80,.92),rgba(5,10,20,.98) 72%);overflow:hidden}
+#start .rays{position:absolute;left:50%;top:40%;width:200cqmax;height:200cqmax;margin:-100cqmax 0 0 -100cqmax;background:repeating-conic-gradient(rgba(255,255,255,.07) 0 6deg,transparent 6deg 14deg);animation:spin 20s linear infinite}
+.logo777{position:relative;font-family:var(--disp);font-size:8cqmin;line-height:.95;background:linear-gradient(#fff 0,#ffe680 30%,#ff9d00 50%,#fff 52%,#ffd000 70%,#a65b00 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:.35cqmin #600;filter:drop-shadow(0 0 1.2cqmin #f0f) drop-shadow(0 .7cqmin 0 #300);animation:logoBob 1.4s ease-in-out infinite}
+.logo777 span{display:block;font-size:2em;background:var(--rainbow);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:.4cqmin #fff;animation:rb 1s linear infinite}
+@keyframes logoBob{50%{transform:scale(1.04) rotate(-1deg)}}
+.tagline{position:relative;font-family:var(--jp);font-weight:900;font-size:3cqmin;color:#ffe600;text-shadow:0 0 1cqmin #f0f}
+button.big{position:relative;font-family:var(--disp);font-size:clamp(18px,5.5cqmin,44px);padding:.4em 1.2em;border:.6cqmin solid #ffd700;border-radius:999px;background:linear-gradient(#ff3b3b,#a00000);color:#fff;cursor:pointer;box-shadow:0 0 3cqmin #f00,0 .8cqmin 0 #500;animation:throb .8s infinite}
+@keyframes throb{50%{scale:1.07}}
+.calmrow{position:relative;font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center;cursor:pointer}
+#start p{position:relative;font-size:12px;color:var(--muted);max-width:540px}
+#replay{position:absolute;bottom:4cqh;left:50%;transform:translateX(-50%);z-index:46;display:none}
+
+/* ================= SCENE 1: PACHISLOT ================= */
+#s1{background:#100}
+#s1 .strobe{position:absolute;inset:0;animation:strobe .16s steps(1) infinite}
+#s1.alert .strobe{animation:strobeRed .09s steps(1) infinite}
+@keyframes strobe{0%{background:#500}25%{background:#005}50%{background:#505}75%{background:#050}}
+@keyframes strobeRed{0%{background:#f00}50%{background:#200}}
+#s1 .beams{position:absolute;inset:-60%;background:repeating-conic-gradient(rgba(255,0,200,.4) 0 10deg,transparent 10deg 20deg,rgba(0,255,255,.35) 20deg 30deg,transparent 30deg 40deg,rgba(255,255,0,.35) 40deg 50deg,transparent 50deg 60deg);animation:spin .9s linear infinite}
+#s1.alert .beams{animation-duration:.3s}
+.bgmarq{position:absolute;left:0;white-space:nowrap;font-family:var(--jp);font-weight:900;font-size:14cqh;line-height:1;color:rgba(255,255,255,.15);pointer-events:none}
+.bgmarq span{display:inline-block;animation:marq 5s linear infinite}
+.bgmarq.b span{animation-direction:reverse}
+.tower{position:absolute;top:8%;bottom:8%;width:5cqw;border-radius:2cqw;background:repeating-linear-gradient(#f00 0 8%,#ff0 8% 16%,#0f0 16% 24%,#0ff 24% 32%,#00f 32% 40%,#f0f 40% 48%) 0 0/100% 50%;box-shadow:0 0 3cqmin #fff;animation:tower .3s linear infinite;opacity:.85}
+.tower.l{left:2cqw}.tower.r{right:2cqw}
+@keyframes tower{to{background-position:0 100%}}
+.cabinet{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);padding:2.2cqmin;border-radius:3cqmin;background:linear-gradient(#e00,#600);border:1cqmin solid #ffd700;box-shadow:0 0 6cqmin #ff0,inset 0 0 3cqmin #000}
+.cabinet.won{animation:wonGlow .12s steps(2) infinite}
+@keyframes wonGlow{50%{box-shadow:0 0 12cqmin 4cqmin #fff,inset 0 0 3cqmin #000;border-color:#fff}}
+.led{position:relative;width:0;min-width:100%;background:#110300;border:.5cqmin solid #333;border-radius:1cqmin;overflow:hidden;white-space:nowrap;height:8cqmin;display:flex;align-items:center;margin:1.2cqmin 0}
+.led span{display:inline-block;font-family:var(--disp);font-size:6cqmin;color:#ff3;text-shadow:0 0 1cqmin #f80;animation:marq 4s linear infinite}
+.led::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,transparent 40%,#110300 62%) 0 0/.7cqmin .7cqmin;pointer-events:none}
+.reels{position:relative;display:flex;gap:2cqmin;justify-content:center;margin:1.6cqmin 0}
+.reels::after{content:"";position:absolute;left:-1cqmin;right:-1cqmin;top:50%;height:.5cqmin;margin-top:-.25cqmin;background:#f22;box-shadow:0 0 1.5cqmin #f00;opacity:.8}
+.reel{width:21cqmin;height:19cqmin;overflow:hidden;background:linear-gradient(#999,#fff 30%,#fff 70%,#999);border-radius:1.4cqmin;box-shadow:0 0 0 .7cqmin #222,inset 0 1.6cqmin 2cqmin rgba(0,0,0,.5),inset 0 -1.6cqmin 2cqmin rgba(0,0,0,.5)}
+.reel.aura{animation:aura .12s steps(1) infinite}
+@keyframes aura{0%{box-shadow:0 0 0 .7cqmin #ff0,0 0 5cqmin 2cqmin #f0f}50%{box-shadow:0 0 0 .7cqmin #0ff,0 0 5cqmin 2cqmin #ff0}}
+.reel.land{animation:landB .3s cubic-bezier(.3,2,.5,1)}
+@keyframes landB{from{transform:scale(1.15)}to{transform:none}}
+.reels.won .reel{animation:reelWin .1s steps(2) infinite}
+@keyframes reelWin{50%{background:linear-gradient(#ff0,#fff 30%,#fff 70%,#ff0);box-shadow:0 0 0 .7cqmin #fff,0 0 6cqmin 2cqmin #ff0}}
+.strip div{display:flex;align-items:center;justify-content:center;font-size:12.5cqmin;font-family:var(--emoji)}
+.seven{font-family:var(--disp);font-weight:normal;font-style:italic;font-size:16cqmin;line-height:1;color:#ff2020;-webkit-text-stroke:.45cqmin #ffd700;text-shadow:0 .7cqmin 0 #7a0000,0 0 2cqmin rgba(255,40,40,.7)}
+.bulbrow{display:flex;justify-content:space-between;gap:1cqmin}
+.bulb{width:2.4cqmin;height:2.4cqmin;border-radius:50%;animation:chase .3s steps(1) infinite}
+.bulb:nth-child(3n+1){animation-delay:-.1s}.bulb:nth-child(3n+2){animation-delay:-.2s}
+@keyframes chase{0%{background:#ff0;box-shadow:0 0 1.4cqmin .5cqmin #ff0}33%{background:#f0f;box-shadow:0 0 1.4cqmin .5cqmin #f0f}66%{background:#311;box-shadow:none}}
+.status{text-align:center;font-family:var(--disp);font-size:4.6cqmin;color:#0ff;text-shadow:0 0 1cqmin #0ff;animation:blink .1s steps(1) infinite;white-space:nowrap}
+#s1.alert .status{color:#fff;font-family:var(--jp);font-weight:900;text-shadow:0 0 1.4cqmin #f00,0 0 3cqmin #f00}
+
+/* ================= SCENE 2: SUMO SEESAW ================= */
+#s2{background:radial-gradient(ellipse at 50% 100%,#ffd28a 0,#e0782a 35%,#5a1040 70%,#12002a 100%)}
+#s2 .bgrays{position:absolute;left:50%;top:60%;width:200cqmax;height:200cqmax;margin:-100cqmax 0 0 -100cqmax;background:repeating-conic-gradient(rgba(255,255,255,.13) 0 8deg,transparent 8deg 16deg);animation:spin 6s linear infinite}
+#s2 .crowd{position:absolute;inset:0;opacity:.55;background:radial-gradient(circle,#c35 38%,transparent 41%) 0 0/3.4cqmin 3.4cqmin,radial-gradient(circle,#35c 38%,transparent 41%) 1.7cqmin 1.7cqmin/3.4cqmin 3.4cqmin,radial-gradient(circle,#2a8 30%,transparent 33%) .9cqmin 2.4cqmin/5.1cqmin 5.1cqmin}
+#s2 svg{position:absolute;inset:0;width:100%;height:100%}
+.puff{transform-box:fill-box;transform-origin:center;animation:puff .55s ease-out forwards}
+@keyframes puff{from{opacity:.95;transform:scale(.3)}to{opacity:0;transform:scale(2.4)}}
+.stick{transform-box:fill-box;transform-origin:50% 100%;animation:sway .35s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-28deg)}to{transform:rotate(28deg)}}
+.lantern{transform-box:fill-box;transform-origin:50% 0;animation:swing 1.2s ease-in-out infinite alternate}
+@keyframes swing{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
+.auraP{transform-box:fill-box;transform-origin:center;animation:auraP .18s ease-in-out infinite alternate}
+@keyframes auraP{to{transform:scale(1.3)}}
+
+/* ================= SCENE 3: LEG REV ================= */
+#s3{background:#c98a3c}
+#s3 .sky{position:absolute;left:0;right:0;top:0;height:58%;overflow:hidden;background:linear-gradient(#ff2d7a,#ff7a00 50%,#ffd23f)}
+#s3 .sunburst{position:absolute;left:50%;top:70%;width:220cqmax;height:220cqmax;margin:-110cqmax 0 0 -110cqmax;background:repeating-conic-gradient(rgba(255,255,255,.3) 0 9deg,transparent 9deg 18deg);animation:spin 2s linear infinite}
+#s3 .sun{position:absolute;left:50%;top:70%;width:24cqmin;height:24cqmin;margin:-12cqmin 0 0 -12cqmin;border-radius:50%;background:radial-gradient(circle,#fff 0,#fff3a0 50%,#ffb000 100%);box-shadow:0 0 6cqmin 3cqmin #ffe066;animation:sunP .22s ease-in-out infinite alternate}
+@keyframes sunP{to{transform:scale(1.12)}}
+#s3 .mesa{position:absolute;bottom:0;background:#a8521f;clip-path:polygon(10% 100%,22% 10%,78% 10%,90% 100%)}
+#s3 .ground{position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(#f0cf8a,#c98a3c)}
+#s3 .cactus{position:absolute;font-size:9cqmin;font-family:var(--emoji)}
+.hl{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.hl.flip{transform:scaleX(-1)}
+.hl i{position:absolute;left:0;height:.45cqmin;background:linear-gradient(90deg,#fff,rgba(255,255,255,0));border-radius:1cqmin;animation:streak .25s linear infinite}
+@keyframes streak{from{transform:translateX(110cqw)}to{transform:translateX(-40cqw)}}
+#s3 .post{position:absolute;left:50%;top:22%;bottom:30%;width:2.4cqmin;margin-left:-1.2cqmin;background:#6b3e1a;z-index:2}
+.board{position:absolute;top:24%;z-index:2;font-family:var(--disp);font-size:6cqmin;padding:.2em .6em;background:#c58a4a;color:#3a1d05;border:.5cqmin solid #6b3e1a;white-space:nowrap}
+.board.l{right:50%;clip-path:polygon(12% 0,100% 0,100% 100%,12% 100%,0 50%);padding-left:1.2em}
+.board.r{left:50%;clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%);padding-right:1.2em}
+.board.on{background:#ffef3a;color:#a00;box-shadow:0 0 40px #ff0}
+.board.win{background:#ffd700;color:#a00;animation:blink .15s steps(1) infinite}
+.runner{position:absolute;left:50%;bottom:8%;width:34cqmin;margin-left:-17cqmin;z-index:3}
+.runner svg{width:100%;display:block}
+.runner.ghost{z-index:2;opacity:.55;filter:hue-rotate(var(--h)) saturate(3) brightness(1.3);animation:ghost .35s ease-out forwards;pointer-events:none}
+@keyframes ghost{to{opacity:0}}
+.wheel{transform-origin:95px 250px;animation:spin .09s linear infinite}
+.arms{transform-origin:105px 135px;animation:pump .12s ease-in-out infinite alternate}
+@keyframes pump{from{transform:rotate(-25deg)}to{transform:rotate(25deg)}}
+.dust{position:absolute;bottom:7%;width:9cqmin;height:9cqmin;border-radius:50%;background:radial-gradient(circle,#fff3d6,#e3c38a 55%,transparent 70%);animation:dust .5s ease-out forwards;pointer-events:none;z-index:2}
+@keyframes dust{from{transform:translate(0,0) scale(.4);opacity:.95}to{transform:translate(var(--dx),-4cqmin) scale(2.1);opacity:0}}
+.trail{position:absolute;left:50%;bottom:18%;height:10cqmin;width:0;z-index:2;border-radius:0 5cqmin 5cqmin 0;background:linear-gradient(90deg,transparent,#ff004c 15%,#ffdd00 30%,#00ff6a 45%,#00d0ff 60%,#a000ff 75%,#fff);filter:blur(.4cqmin);opacity:0}
+.trail.go{opacity:1;width:70cqw;transition:width .26s ease-in}
+.zip{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-10deg);font-family:var(--disp);font-size:20cqmin;color:#fff;-webkit-text-stroke:.7cqmin #000;text-shadow:1.2cqmin 1.2cqmin 0 #f30;display:none;z-index:4}
+.which{position:absolute;top:3%;left:50%;z-index:4;text-align:center;font-family:var(--jp);font-weight:900;font-size:10cqmin;line-height:1;white-space:nowrap;background:linear-gradient(#fff,#ff0 50%,#f60);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:.45cqmin #400;transform:translateX(-50%);animation:whichP .18s ease-in-out infinite alternate}
+.which small{display:block;font-family:var(--disp);font-size:4.2cqmin;-webkit-text-stroke:.2cqmin #400}
+@keyframes whichP{to{transform:translateX(-50%) scale(1.12) rotate(-3deg)}}
+
+/* ================= SCENE 4: COIN FLIP ================= */
+#s4{--g:0;--b:1;background:#c9d6cc}
+#s4 .dim{filter:grayscale(var(--g)) brightness(var(--b))}
+.wall{position:absolute;inset:0 0 35% 0;background:linear-gradient(#e6efe7,#c3d1c6)}
+.tubes{position:absolute;top:2%;left:8%;right:8%;height:1.6cqmin;display:flex;gap:6%}
+.tube{flex:1;background:#fff;box-shadow:0 0 4cqmin 1.5cqmin rgba(230,255,240,.9);border-radius:1cqmin}
+.tube:nth-child(2){animation:flicker 1.1s infinite}
+@keyframes flicker{0%,18%,22%,60%,64%,100%{opacity:1}20%,62%{opacity:.1}}
+.storesign{position:absolute;top:6%;left:50%;transform:translateX(-50%);background:#1f8a4c;color:#fff;padding:.15em .8em;font-family:var(--disp);font-size:6cqmin;border:.5cqmin solid #fff;border-radius:1cqmin;letter-spacing:.05em;white-space:nowrap}
+.shelves{position:absolute;left:4%;right:4%;top:19%;height:43%;display:grid;grid-template-rows:repeat(4,1fr);gap:3%}
+.shelf{display:flex;align-items:flex-end;gap:.4cqmin;border-bottom:1cqmin solid #8a9a9a;padding:0 .5cqmin}
+.shelf i{display:block;flex:1;border-radius:.4cqmin .4cqmin 0 0;box-shadow:inset -.4cqmin 0 0 rgba(0,0,0,.15)}
+.vortex{position:absolute;left:50%;top:42%;width:220cqmax;height:220cqmax;margin:-110cqmax 0 0 -110cqmax;z-index:1;opacity:0;background:repeating-conic-gradient(#b00000 0 9deg,#ffcc00 9deg 11deg,#3a0000 11deg 20deg);animation:spin 1.4s linear infinite}
+.vortex.rainbow{background:repeating-conic-gradient(#ff004c 0 10deg,#ffdd00 10deg 20deg,#00ff6a 20deg 30deg,#00d0ff 30deg 40deg,#a000ff 40deg 50deg);animation-duration:.6s}
+.clerk{position:absolute;bottom:29%;left:50%;transform:translateX(-50%);height:62%;aspect-ratio:3/4;z-index:2}
+.clerk svg{width:100%;height:100%;display:block}
+.counter{position:absolute;left:0;right:0;bottom:0;height:35%;background:linear-gradient(#7a4b2a,#3e2210);border-top:2cqmin solid #b07a4a;z-index:4}
+.register{position:absolute;bottom:35%;left:10%;width:18cqmin;height:14cqmin;background:linear-gradient(#444,#222);border-radius:1cqmin 1cqmin 0 0;z-index:4}
+.register::before{content:"$0.00";position:absolute;top:12%;left:10%;right:10%;background:#0a2;color:#cfc;font-family:monospace;font-size:3cqmin;text-align:right;padding:.2cqmin .5cqmin}
+.bubble{position:absolute;left:4%;top:6%;max-width:min(36cqw,60cqh);background:#fff;color:#111;font-family:"Comic Sans MS","Chalkboard SE",sans-serif;font-size:min(4.2cqmin,3.6cqw);line-height:1.25;padding:.5em .9em;border-radius:1em;border:.4cqmin solid #111;z-index:6}
+.bubble::after{content:"";position:absolute;right:-1.8cqmin;top:55%;border-top:1cqmin solid transparent;border-bottom:1cqmin solid transparent;border-left:1.8cqmin solid #111}
+.coinwrap{position:absolute;left:78%;top:51%;width:13cqmin;height:13cqmin;margin:-6.5cqmin 0 0 -6.5cqmin;perspective:600px;z-index:5}
+.coin{width:100%;height:100%;position:relative;transform-style:preserve-3d}
+.face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--disp);font-size:2cqmin;line-height:1.1;color:#7a5200;border:.7cqmin solid #b8860b;background:radial-gradient(circle at 35% 30%,#fff7b0,#ffd700 40%,#c99700)}
+.face.back{transform:rotateX(180deg);background:radial-gradient(circle at 35% 30%,#eee,#aaa 40%,#666);color:#333;border-color:#555}
+.coin.win .face{box-shadow:0 0 4cqmin 1.5cqmin #ffe600}
+/* darkness that closes in on the coin: an ellipse whose clear centre shrinks (radii driven from JS) */
+.vignette{position:absolute;inset:0;background:radial-gradient(var(--rw,200cqw) var(--rh,200cqh) at var(--vx,58%) var(--vy,40%),transparent 45%,rgba(0,0,0,.97) 100%);opacity:0;z-index:7;pointer-events:none}
+
+/* ================= SCENE 5: DIVINE PAYOUT ================= */
+#s5{background:radial-gradient(circle at 50% 35%,#fffbe6 0,#ffe27a 30%,#f5a623 65%,#8a4416 100%)}
+#s5 .rays{position:absolute;left:50%;top:35%;width:260cqmax;height:260cqmax;margin:-130cqmax 0 0 -130cqmax;background:repeating-conic-gradient(rgba(255,255,255,.6) 0 5deg,transparent 5deg 10deg,rgba(255,170,255,.4) 10deg 15deg,transparent 15deg 20deg);animation:spin 10s linear infinite}
+#s5 .rose{position:absolute;left:50%;top:38%;width:84cqmin;height:84cqmin;margin:-42cqmin 0 0 -42cqmin;border-radius:50%;opacity:.85;background:radial-gradient(circle,transparent 0 17%,rgba(60,30,0,.55) 17% 18.5%,transparent 18.5% 40%,rgba(60,30,0,.55) 40% 41.5%,transparent 41.5% 67%,rgba(60,30,0,.75) 67% 70%,transparent 70%),repeating-conic-gradient(#e11 0 15deg,#fd0 15deg 30deg,#13c 30deg 45deg,#1b4 45deg 60deg,#a1d 60deg 75deg,#0cf 75deg 90deg);box-shadow:0 0 0 1.4cqmin #7a4a00,0 0 8cqmin 2cqmin rgba(255,255,255,.6);animation:spin 18s linear infinite}
+#s5 .pillar{position:absolute;left:50%;top:0;bottom:0;width:46cqmin;margin-left:-23cqmin;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9) 35%,#fff 50%,rgba(255,255,255,.9) 65%,transparent);opacity:0;z-index:1}
+#s5.active .pillar{animation:pillar 1.6s ease-out both}
+@keyframes pillar{0%{opacity:0;transform:scaleX(.1)}15%{opacity:1;transform:scaleX(1.2)}100%{opacity:.35;transform:scaleX(1)}}
+.float{position:absolute;font-size:8cqmin;z-index:2;font-family:var(--emoji);animation:floaty 2.4s ease-in-out infinite alternate}
+@keyframes floaty{from{transform:translateY(-3cqmin) rotate(-8deg)}to{transform:translateY(3cqmin) rotate(8deg)}}
+.dove{position:absolute;left:0;font-size:6cqmin;z-index:2;font-family:var(--emoji);animation:dove 3.2s linear infinite}
+@keyframes dove{from{transform:translateX(-20cqw)}to{transform:translateX(130cqw)}}
+.dove.r{animation-name:doveR}
+@keyframes doveR{from{transform:translateX(130cqw) scaleX(-1)}to{transform:translateX(-20cqw) scaleX(-1)}}
+.jesus{position:absolute;left:50%;bottom:3%;height:76%;aspect-ratio:4/5;transform:translateX(-50%);z-index:3}
+#s5.active .jesus{animation:descend 1.4s cubic-bezier(.2,.9,.3,1) both}
+@keyframes descend{from{transform:translate(-50%,-110cqh)}to{transform:translate(-50%,0)}}
+.jesus svg{width:100%;height:100%;display:block;position:relative;z-index:2;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-1.5%)}}
+.check{transform-box:fill-box;transform-origin:center}
+#s5.active .check{animation:offer .8s 1.4s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes offer{from{transform:scale(.6)}to{transform:scale(1.55) translateY(12%)}}
+.cloud{position:absolute;left:-15%;right:-15%;bottom:-6%;height:24%;z-index:3}
+.cloud i{position:absolute;bottom:0;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff,#e8eefc 70%);box-shadow:0 0 30px rgba(255,255,255,.8)}
+.s5title{position:absolute;top:2.5%;left:0;right:0;z-index:5;text-align:center;opacity:0;pointer-events:none}
+#s5.active .s5title{animation:titleIn .7s 1.9s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes titleIn{from{opacity:0;transform:scale(3)}to{opacity:1;transform:scale(1)}}
+.s5title .t{font-family:var(--jp);font-weight:900;font-size:min(10cqmin,8.6cqw);line-height:1;white-space:nowrap;background:linear-gradient(#fff,#ffd700 50%,#ff8c00);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:.35cqmin #7a3b00;filter:drop-shadow(0 0 2cqmin #fff)}
+.s5amt{display:inline-block;margin-top:1cqmin;font-family:"Courier New",monospace;font-weight:900;font-size:6.5cqmin;color:#8dff7a;background:#021a05;border:.5cqmin solid #0f0;border-radius:1cqmin;padding:0 .5em;text-shadow:0 0 1.5cqmin #0f0;box-shadow:0 0 3cqmin rgba(0,255,0,.6)}
+.s5bubble{position:absolute;right:2.5%;top:30%;max-width:27cqw;background:#fff;color:#4a2a00;font-family:Georgia,serif;font-style:italic;font-size:3.3cqmin;padding:.5em .8em;border-radius:1em;border:.4cqmin solid #c99700;z-index:6;opacity:0}
+#s5.active .s5bubble{animation:titleIn .5s 1.3s both}
+
+/* ================= REDUCE FLASHING ================= */
+body.calm #s1 .strobe{animation:none;background:#300}
+body.calm #s1.alert .strobe{background:#400}
+body.calm .blinky,body.calm .status,body.calm .cabinet.won,body.calm .reels.won .reel,body.calm .reel.aura,body.calm .board.win,body.calm #speed.on,body.calm #cutin .txt{animation:none}
+body.calm #jp .main{animation:mainIn .45s .08s cubic-bezier(.2,1.8,.4,1) both}
+body.calm .bulb{animation-duration:1.5s}
+body.calm .tower{animation-duration:2s}
+body.calm #gameframe::after,body.calm #topbar::after,body.calm .logo{animation-duration:4s}
+body.calm #chat{animation:none}
+</style>
+</head>
+<body>
+
+<header id="topbar">
+  <div class="logo"><span class="chip">7</span><span>Trevor<b>Wins</b>Big</span></div>
+  <nav class="nav"><a class="on">🎰 Casino</a><a>⚽ Sports</a><a>🎁 Promotions</a></nav>
+  <div class="wallet"><div class="bal" id="bal"><span id="balTxt">$1.00</span><span class="cur">$</span></div><div class="wbtn">Wallet</div></div>
+  <div class="vip">VIP · Gold → Platinum<div class="vipbar"><i id="vip"></i></div></div>
+  <div class="icons"><span class="ic">🔍</span><span class="ic">🔔</span><div class="avatar">T</div></div>
+</header>
+
+<nav id="side"><a class="on" title="Casino">🎰</a><a title="Sports">⚽</a><a title="Promotions">🎁</a><a title="VIP Club">👑</a><a title="Leaderboard">🏆</a><a title="Settings">⚙️</a></nav>
+
+<main id="main">
+  <div id="gameframe">
+    <div id="huer"><div id="shaker">
+      <div id="stage">
+
+        <!-- SCENE 1: PACHISLOT -->
+        <section class="scene" id="s1">
+          <div class="strobe"></div>
+          <div class="beams"></div>
+          <div class="bgmarq a" style="top:1%"><span>フィーバー ★ 777 ★ 大当たり ★ TREVOR ★ 確変 ★ フィーバー ★ 777 ★ 大当たり ★ TREVOR ★ 確変 ★ </span></div>
+          <div class="bgmarq b" style="bottom:1%"><span>JACKPOT ★ 激アツ ★ 777 ★ リーチ ★ JACKPOT ★ 激アツ ★ 777 ★ リーチ ★ </span></div>
+          <div class="tower l"></div><div class="tower r"></div>
+          <div class="cabinet">
+            <div class="bulbrow"></div>
+            <div class="led"><span>★ TREVOR FEVER 777 ★ JACKPOT CHANCE ★ 確変 ★ ALL-IN ★&nbsp;★ TREVOR FEVER 777 ★ JACKPOT CHANCE ★ 確変 ★ ALL-IN ★&nbsp;</span></div>
+            <div class="reels">
+              <div class="reel"><div class="strip"></div></div>
+              <div class="reel"><div class="strip"></div></div>
+              <div class="reel"><div class="strip"></div></div>
+            </div>
+            <div class="status" id="s1status">!!! SPINNING !!!</div>
+            <div class="bulbrow"></div>
+          </div>
+        </section>
+
+        <!-- SCENE 2: SUMO SEESAW -->
+        <section class="scene" id="s2">
+          <div class="bgrays"></div>
+          <div class="crowd"></div>
+          <svg viewBox="0 -200 800 700">
+            <defs>
+              <radialGradient id="lant"><stop offset="0" stop-color="#fff2a0"/><stop offset=".5" stop-color="#ff4a1f"/><stop offset="1" stop-color="#9a0000"/></radialGradient>
+              <radialGradient id="auraG"><stop offset="0" stop-color="#fff"/><stop offset=".4" stop-color="#ffe600" stop-opacity=".9"/><stop offset="1" stop-color="#ff8a00" stop-opacity="0"/></radialGradient>
+            </defs>
+            <g id="sticks"></g>
+            <g id="lanterns"></g>
+            <text x="400" y="-105" text-anchor="middle" font-size="56" fill="#ffe7b0" stroke="#5a1a00" stroke-width="4" paint-order="stroke" font-family="Impact,sans-serif">SEESAW BASHO</text>
+            <rect x="-1400" y="440" width="3600" height="1200" fill="#7a4520"/>
+            <ellipse cx="400" cy="475" rx="390" ry="45" fill="#e9c88f" stroke="#7a4a1a" stroke-width="6"/>
+            <ellipse cx="400" cy="475" rx="300" ry="30" fill="none" stroke="#fff" stroke-width="3" opacity=".6"/>
+            <polygon points="350,470 450,470 400,390" fill="#7a4a1a" stroke="#3e2210" stroke-width="4"/>
+            <g id="plank"><rect x="-235" y="-10" width="470" height="20" rx="6" fill="#a86b33" stroke="#4a2c10" stroke-width="3"/></g>
+            <g id="dust"></g>
+            <g id="sumoA"></g>
+            <g id="sumoB"></g>
+          </svg>
+        </section>
+
+        <!-- SCENE 3: LEG REV -->
+        <section class="scene" id="s3">
+          <div class="sky">
+            <div class="sunburst"></div><div class="sun"></div>
+            <div class="mesa" style="left:4%;width:30cqw;height:16cqh"></div>
+            <div class="mesa" style="right:6%;width:22cqw;height:11cqh"></div>
+          </div>
+          <div class="ground"></div>
+          <div class="cactus" style="left:10%;bottom:30%">🌵</div>
+          <div class="cactus" style="right:12%;bottom:24%">🌵</div>
+          <div class="hl" id="hl"></div>
+          <div class="post"></div>
+          <div class="board l" id="boardL">BROKE</div>
+          <div class="board r" id="boardR">???</div>
+          <div class="trail" id="trail"></div>
+          <div class="runner" id="runner">
+            <svg viewBox="0 0 200 320">
+              <path d="M95 112 Q50 100 20 120 Q45 112 60 128 Q30 130 10 150 Q55 135 92 128Z" fill="#e3342f"/>
+              <g class="wheel">
+                <circle cx="95" cy="250" r="58" fill="rgba(255,255,255,.25)"/>
+                <circle cx="95" cy="250" r="50" fill="none" stroke="#7a5230" stroke-width="5" stroke-dasharray="20 14" opacity=".5"/>
+                <g><line x1="95" y1="250" x2="95" y2="196" stroke="#7a5230" stroke-width="9" stroke-linecap="round"/><ellipse cx="104" cy="194" rx="15" ry="8" fill="#e3342f"/></g>
+                <g transform="rotate(60 95 250)"><line x1="95" y1="250" x2="95" y2="196" stroke="#7a5230" stroke-width="9" stroke-linecap="round"/><ellipse cx="104" cy="194" rx="15" ry="8" fill="#e3342f"/></g>
+                <g transform="rotate(120 95 250)"><line x1="95" y1="250" x2="95" y2="196" stroke="#7a5230" stroke-width="9" stroke-linecap="round"/><ellipse cx="104" cy="194" rx="15" ry="8" fill="#e3342f"/></g>
+                <g transform="rotate(180 95 250)"><line x1="95" y1="250" x2="95" y2="196" stroke="#7a5230" stroke-width="9" stroke-linecap="round"/><ellipse cx="104" cy="194" rx="15" ry="8" fill="#e3342f"/></g>
+                <g transform="rotate(240 95 250)"><line x1="95" y1="250" x2="95" y2="196" stroke="#7a5230" stroke-width="9" stroke-linecap="round"/><ellipse cx="104" cy="194" rx="15" ry="8" fill="#e3342f"/></g>
+                <g transform="rotate(300 95 250)"><line x1="95" y1="250" x2="95" y2="196" stroke="#7a5230" stroke-width="9" stroke-linecap="round"/><ellipse cx="104" cy="194" rx="15" ry="8" fill="#e3342f"/></g>
+              </g>
+              <ellipse cx="102" cy="160" rx="28" ry="46" fill="#3b7dd8" transform="rotate(15 102 160)"/>
+              <text x="104" y="170" text-anchor="middle" font-size="26" fill="#fff" font-family="Impact,sans-serif" transform="rotate(15 102 160)">$</text>
+              <g class="arms">
+                <path d="M105 135 L145 150 L160 125" stroke="#7a5230" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M105 135 L70 150 L60 128" stroke="#7a5230" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <circle cx="122" cy="78" r="44" fill="#f2b45c"/>
+              <path d="M80 68 Q122 50 164 68" stroke="#e3342f" stroke-width="10" fill="none"/>
+              <ellipse cx="132" cy="82" rx="12" ry="16" fill="#fff"/><ellipse cx="156" cy="82" rx="11" ry="15" fill="#fff"/>
+              <circle cx="138" cy="85" r="6" fill="#111"/><circle cx="161" cy="85" r="5.5" fill="#111"/>
+              <path d="M118 66 L144 72 M150 72 L170 66" stroke="#111" stroke-width="4" stroke-linecap="round"/>
+              <ellipse cx="166" cy="98" rx="10" ry="7" fill="#c97a2a"/>
+              <path d="M125 106 Q148 122 168 108 Q148 114 125 106Z" fill="#fff" stroke="#111" stroke-width="2"/>
+              <path d="M78 60 q-6 -10 2 -16" stroke="#7cd3ff" stroke-width="4" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="zip" id="zip">ZIP!!</div>
+          <div class="which" id="which">どっち?!<small>WHICH WAY?!</small></div>
+        </section>
+
+        <!-- SCENE 4: COIN FLIP -->
+        <section class="scene" id="s4">
+          <div class="wall dim"></div>
+          <div class="tubes dim"><div class="tube"></div><div class="tube"></div><div class="tube"></div></div>
+          <div class="storesign dim">MOON MART · 24H</div>
+          <div class="shelves dim" id="shelves"></div>
+          <div class="vortex" id="vortex"></div>
+          <div class="clerk">
+            <!-- the stranger: heavy pageboy cut, dark denim jacket, dead-flat stare -->
+            <svg viewBox="0 0 300 400">
+              <path d="M56 400 Q58 270 150 254 Q242 270 244 400 Z" fill="#363c45"/>
+              <path d="M124 258 L150 336 L176 258 Q150 268 124 258Z" fill="#111"/>
+              <path d="M116 260 L140 306 L150 266 Z" fill="#2a2f37"/>
+              <path d="M184 260 L160 306 L150 266 Z" fill="#2a2f37"/>
+              <path d="M150 336 L150 400 M92 330 L126 330 M174 330 L208 330" stroke="#2a2f37" stroke-width="3"/>
+              <circle cx="150" cy="352" r="3" fill="#8a8f99"/><circle cx="150" cy="380" r="3" fill="#8a8f99"/>
+              <rect x="134" y="212" width="32" height="50" fill="#c08c66"/>
+              <path d="M134 216 L166 216 L166 230 Q150 240 134 230Z" fill="#a8774f" opacity=".6"/>
+              <path d="M212 286 Q256 280 256 246" stroke="#363c45" stroke-width="30" fill="none" stroke-linecap="round"/>
+              <path d="M256 246 L238 210" stroke="#cf9a72" stroke-width="18" fill="none" stroke-linecap="round"/>
+              <circle cx="235" cy="205" r="13" fill="#cf9a72"/>
+              <path d="M92 130 Q90 214 150 236 Q210 214 208 130 Q208 66 150 64 Q92 66 92 130Z" fill="#d4a07a"/>
+              <path d="M100 192 Q110 226 150 234 Q190 226 200 192 Q192 216 150 224 Q108 216 100 192Z" fill="#6e5440" opacity=".35"/>
+              <path d="M104 136 Q150 126 196 136 L196 146 Q150 136 104 146Z" fill="#b07f5b" opacity=".55"/>
+              <path d="M108 138 L140 135 M160 135 L192 138" stroke="#1b120c" stroke-width="7" stroke-linecap="round"/>
+              <ellipse cx="124" cy="152" rx="11" ry="5.5" fill="#efe3d3"/><circle cx="125" cy="152" r="4.8" fill="#140d08"/>
+              <ellipse cx="176" cy="152" rx="11" ry="5.5" fill="#efe3d3"/><circle cx="175" cy="152" r="4.8" fill="#140d08"/>
+              <path d="M112 149 Q124 145 136 149 M164 149 Q176 145 188 149" stroke="#5a3a26" stroke-width="3" fill="none"/>
+              <path d="M114 160 Q124 164 134 160 M166 160 Q176 164 186 160" stroke="#a8724e" stroke-width="2" fill="none"/>
+              <path d="M150 150 L145 186 Q150 192 158 187" stroke="#9c6844" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M132 192 Q128 200 132 208 M168 192 Q172 200 168 208" stroke="#b07f5b" stroke-width="2" fill="none"/>
+              <path d="M134 207 L166 207" stroke="#6e3e2c" stroke-width="3.5" stroke-linecap="round"/>
+              <path d="M80 210 L82 132 Q78 50 150 44 Q222 50 218 132 L220 210 Q212 216 202 210 L200 154 Q197 136 186 132 L114 132 Q103 136 100 154 L98 210 Q88 216 80 210Z" fill="#2a1c12"/>
+              <path d="M118 56 L116 131 M136 50 L135 131 M164 50 L165 131 M182 56 L184 131" stroke="#160e08" stroke-width="2" opacity=".55"/>
+              <path d="M104 78 Q150 54 196 78" stroke="#5a4130" stroke-width="5" fill="none" opacity=".55" stroke-linecap="round"/>
+            </svg>
+            <div class="coinwrap" id="coinwrap">
+              <div class="coin" id="coin">
+                <div class="face">★<br>JACK<br>POT<br>★</div>
+                <div class="face back">BUST</div>
+              </div>
+            </div>
+          </div>
+          <div class="register dim"></div>
+          <div class="counter dim"></div>
+          <div class="bubble" id="bubble">Call it.</div>
+          <div class="vignette" id="vig"></div>
+        </section>
+
+        <!-- SCENE 5: DIVINE PAYOUT -->
+        <section class="scene" id="s5">
+          <div class="rays"></div>
+          <div class="rose"></div>
+          <div class="pillar"></div>
+          <div class="float" style="left:5%;top:28%">👼🎺</div>
+          <div class="float" style="left:7%;top:58%;animation-delay:-1.2s">🎺👼</div>
+          <div class="float" style="right:30%;top:68%;animation-delay:-.6s">✨</div>
+          <div class="float" style="left:24%;top:70%;animation-delay:-1.8s">✨</div>
+          <div class="dove" style="top:12%">🕊️</div>
+          <div class="dove r" style="top:22%;animation-delay:-1.6s">🕊️</div>
+          <div class="s5title"><div class="t">神 DIVINE WIN 神</div><div class="s5amt" id="s5amt">$216.00</div></div>
+          <div class="s5bubble">"Here are thy winnings, my child. Well done, good and faithful gambler."</div>
+          <div class="jesus">
+            <svg viewBox="0 0 400 500">
+              <defs>
+                <radialGradient id="haloG"><stop offset=".5" stop-color="#fffbd0" stop-opacity="0"/><stop offset=".72" stop-color="#fff3a0" stop-opacity=".95"/><stop offset="1" stop-color="#ffd700" stop-opacity="0"/></radialGradient>
+              </defs>
+              <circle cx="200" cy="85" r="92" fill="url(#haloG)"/>
+              <circle cx="200" cy="85" r="64" fill="none" stroke="#ffe066" stroke-width="8" opacity=".95"/>
+              <path d="M150 72 Q150 24 200 24 Q250 24 250 72 L264 178 Q200 194 136 178 Z" fill="#6b4423"/>
+              <path d="M120 172 Q200 140 280 172 L335 500 L65 500 Z" fill="#f7f3ea" stroke="#d9d0bd" stroke-width="3"/>
+              <path d="M120 172 Q96 300 84 500 L165 500 Q150 320 178 178 Z" fill="#3a5fa8"/>
+              <path d="M178 178 L305 330 L290 346 L166 198Z" fill="#b3262e"/>
+              <ellipse cx="200" cy="92" rx="30" ry="38" fill="#d9a77a"/>
+              <path d="M171 100 Q175 148 200 152 Q225 148 229 100 Q215 126 200 123 Q185 126 171 100Z" fill="#5a3a1e"/>
+              <path d="M169 92 Q171 50 200 48 Q229 50 231 92 Q222 60 200 60 Q178 60 169 92Z" fill="#6b4423"/>
+              <path d="M183 90 Q190 84 197 90 M203 90 Q210 84 217 90" stroke="#3a2410" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path d="M189 111 Q200 119 211 111" stroke="#3a2410" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path d="M138 188 Q125 250 120 305" stroke="#f7f3ea" stroke-width="34" fill="none" stroke-linecap="round"/>
+              <path d="M262 188 Q275 250 280 305" stroke="#f7f3ea" stroke-width="34" fill="none" stroke-linecap="round"/>
+              <g class="check">
+                <rect x="92" y="268" width="216" height="104" rx="4" fill="#eaffea" stroke="#2d6a3e" stroke-width="4"/>
+                <text x="104" y="288" font-size="10" fill="#2d6a3e" font-family="Georgia,serif">FIRST HEAVENLY BANK</text>
+                <text x="296" y="288" font-size="10" fill="#2d6a3e" font-family="Georgia,serif" text-anchor="end">No. 777</text>
+                <text x="104" y="307" font-size="11" fill="#222" font-family="Georgia,serif">PAY TO THE ORDER OF: <tspan font-weight="bold">TREVOR</tspan></text>
+                <text x="200" y="336" font-size="25" fill="#111" font-family="Georgia,serif" font-weight="bold" text-anchor="middle" id="checkAmt">$216.00</text>
+                <text x="104" y="361" font-size="9" fill="#444" font-family="Georgia,serif" id="checkMemo">MEMO: $12 × 3 × 2.5 × 2.4</text>
+                <text x="296" y="362" font-size="15" fill="#123" font-family="'Brush Script MT',cursive" text-anchor="end">J. of Nazareth</text>
+                <circle cx="102" cy="322" r="17" fill="#d9a77a"/>
+                <circle cx="298" cy="322" r="17" fill="#d9a77a"/>
+              </g>
+            </svg>
+            <div class="cloud">
+              <i style="left:0;width:34%;height:80%"></i>
+              <i style="left:20%;width:30%;height:110%"></i>
+              <i style="left:40%;width:28%;height:95%"></i>
+              <i style="left:58%;width:30%;height:115%"></i>
+              <i style="left:72%;width:28%;height:80%"></i>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div id="speed"></div>
+      <div id="words"></div>
+      <div id="cutin"></div>
+      <div id="jp"><div class="burst"></div><div class="kanji" id="jpKanji">大当たり!!</div><div class="main">JACKPOT!!</div><div class="tier" id="jpTier">BIG WIN</div><div class="amt" id="jpAmt">$12.00</div><div class="sub" id="jpSub"></div></div>
+      <div id="wipe"></div>
+      <div id="flash"></div>
+    </div></div>
+
+    <div class="gtag l">TREVOR FEVER 777 · TrevorWinsBig Originals</div>
+    <div class="gtag r">RTP 777% · 🔒 Provably Fair*</div>
+
+    <div id="start">
+      <div class="rays"></div>
+      <div class="logo777">TREVOR<span>FEVER</span>777</div>
+      <div class="tagline">大当たり確定!? ★ The Ultimate Anime Pachinko Jackpot Experience</div>
+      <button class="big" id="go">🎰 PULL THE LEVER 🎰</button>
+      <label class="calmrow"><input type="checkbox" id="calmChk"> Reduce flashing (photosensitivity mode)</label>
+      <p>⚠ Extreme flashing lights, loud music, voices &amp; sound effects. Set your volume to something sane first.</p>
+    </div>
+    <button class="big" id="replay">🔁 AGAIN!!</button>
+  </div>
+
+  <div id="controls">
+    <div class="tools">
+      <button id="tSound" title="Sound">🔊</button>
+      <button id="tFlash" title="Flashing lights">💡</button>
+      <button id="tFull" title="Fullscreen">⛶</button>
+    </div>
+    <div class="field opt">Game<div class="box" id="fGame">Mega Slots</div></div>
+    <div class="field opt2">Bet Amount<div class="box">$1.00 <span class="mini">½</span><span class="mini">2×</span></div></div>
+    <div class="field opt">Multipliers<div class="ladder"><span id="L0">$12</span><span id="L1">×3</span><span id="L2">×2.5</span><span id="L3">×2.4</span></div></div>
+    <div class="field opt">Fever<div class="gauge"><i id="gauge"></i></div></div>
+    <div class="field">Total Win<div class="box" id="fWin">$0.00</div></div>
+    <button class="betbtn" id="betBtn">Bet</button>
+  </div>
+</main>
+
+<aside id="chat">
+  <div class="chathead"><span>💬 Chat · English</span><span class="online"><i></i><b id="online">4,821</b> online</span></div>
+  <div class="msgs" id="msgs"></div>
+  <div class="chatin"><input placeholder="Type a message…" disabled><button disabled>Send</button></div>
+</aside>
+
+<div id="tickerbar"><div class="live">● LIVE WINS</div><div class="tw"><div class="track" id="ticker"></div></div><div class="legal">18+ · Play Responsibly · TrevorWinsBig.com</div></div>
+
+<canvas id="fx" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:90"></canvas>
+
+<script>
+'use strict';
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const wait = ms => new Promise(r => setTimeout(r, ms));
+const rand = (a, b) => a + Math.random() * (b - a);
+const pick = a => a[Math.random() * a.length | 0];
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const mod = (a, n) => ((a % n) + n) % n;
+const AUTO = new URLSearchParams(location.search).has('auto');
+let muted = false, calm = false, running = false;
+
+/* =====================================================================
+   AUDIO ENGINE — all synthesized, no files
+   ===================================================================== */
+let AC, master, comp, musicBus, musicLP, sfxBus, hbBus, NOISE;
+function initAudio() {
+  if (!AC) {
+    const C = window.AudioContext || window.webkitAudioContext; if (!C) return;
+    AC = new C();
+    comp = AC.createDynamicsCompressor();
+    comp.threshold.value = -16; comp.knee.value = 12; comp.ratio.value = 5; comp.attack.value = .003; comp.release.value = .18;
+    master = AC.createGain(); master.gain.value = muted ? 0 : .85;
+    master.connect(comp); comp.connect(AC.destination);
+    musicLP = AC.createBiquadFilter(); musicLP.type = 'lowpass'; musicLP.frequency.value = 18000; musicLP.Q.value = 2;
+    musicBus = AC.createGain(); musicBus.gain.value = .5;
+    musicBus.connect(musicLP); musicLP.connect(master);
+    sfxBus = AC.createGain(); sfxBus.gain.value = .8; sfxBus.connect(master);
+    hbBus = AC.createGain(); hbBus.gain.value = 1; hbBus.connect(master); // heartbeat: stays live while music+sfx are cut
+    NOISE = AC.createBuffer(1, AC.sampleRate * 2, AC.sampleRate);
+    const d = NOISE.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  }
+  if (AC.state !== 'running') AC.resume();
+}
+const now = () => AC ? AC.currentTime : 0;
+const mtof = m => 440 * Math.pow(2, (m - 69) / 12);
+function env(g, t, a, v, d) {
+  g.gain.setValueAtTime(.0001, t);
+  g.gain.exponentialRampToValueAtTime(Math.max(v, .0002), t + a);
+  g.gain.exponentialRampToValueAtTime(.0001, t + a + d);
+}
+function osc(type, f, t, d, v, dest, o = {}) {
+  const n = AC.createOscillator(), g = AC.createGain(), a = o.a || .004;
+  n.type = type; n.frequency.setValueAtTime(f, t);
+  if (o.f2) n.frequency.exponentialRampToValueAtTime(o.f2, t + (o.glide || d));
+  if (o.det) n.detune.value = o.det;
+  env(g, t, a, v, d);
+  n.connect(g).connect(dest); n.start(t); n.stop(t + a + d + .05);
+}
+function noise(t, d, v, dest, o = {}) {
+  const s = AC.createBufferSource(), f = AC.createBiquadFilter(), g = AC.createGain(), a = o.a || .002;
+  s.buffer = NOISE; s.loop = true;
+  f.type = o.type || 'highpass'; f.frequency.setValueAtTime(o.f || 1000, t); f.Q.value = o.q || 1;
+  if (o.f2) f.frequency.exponentialRampToValueAtTime(o.f2, t + d);
+  env(g, t, a, v, d);
+  s.connect(f).connect(g).connect(dest); s.start(t, Math.random()); s.stop(t + a + d + .05);
+}
+
+/* instruments (music bus) */
+const I = {
+  kick(t, v = 1) { osc('sine', 170, t, .2, .95 * v, musicBus, { f2: 40, glide: .12 }); osc('square', 1200, t, .012, .08 * v, musicBus); },
+  snare(t, v = 1, dest = musicBus) { noise(t, .15, .5 * v, dest, { type: 'bandpass', f: 2200, q: .6 }); osc('triangle', 240, t, .07, .3 * v, dest, { f2: 150 }); },
+  clap(t, v = 1) { for (let i = 0; i < 3; i++) noise(t + i * .011, i === 2 ? .13 : .05, .35 * v, musicBus, { type: 'bandpass', f: 1300, q: 1.1 }); },
+  hat(t, v = 1, open = false) { noise(t, open ? .16 : .03, .16 * v, musicBus, { type: 'highpass', f: 8500 }); },
+  crash(t, v = 1) { noise(t, 1.5, .28 * v, musicBus, { type: 'highpass', f: 4500 }); },
+  taiko(t, v = 1) { osc('sine', 120, t, .5, v, musicBus, { f2: 45, glide: .3 }); noise(t, .1, .4 * v, musicBus, { type: 'lowpass', f: 700 }); },
+  bass(t, m, d) {
+    const o = AC.createOscillator(), f = AC.createBiquadFilter(), g = AC.createGain();
+    o.type = 'sawtooth'; o.frequency.value = mtof(m); f.type = 'lowpass'; f.Q.value = 7;
+    f.frequency.setValueAtTime(2600, t); f.frequency.exponentialRampToValueAtTime(260, t + d);
+    env(g, t, .004, .32, d); o.connect(f).connect(g).connect(musicBus); o.start(t); o.stop(t + d + .06);
+  },
+  arp(t, m, wave = 'square', v = .055) { osc(wave, mtof(m), t, .085, v, musicBus); },
+  lead(t, m, d, v = .045) { [-16, 0, 16].forEach(det => osc('sawtooth', mtof(m), t, d, v, musicBus, { det, a: .01 })); osc('square', mtof(m - 12), t, d, v * .5, musicBus); },
+  bell(t, m, v = .06) { osc('triangle', mtof(m), t, .45, v, musicBus); osc('sine', mtof(m) * 2.76, t, .2, v * .35, musicBus); },
+  pluck(t, m, v = .14) {
+    const o = AC.createOscillator(), f = AC.createBiquadFilter(), g = AC.createGain();
+    o.type = 'sawtooth'; o.frequency.value = mtof(m); f.type = 'bandpass'; f.frequency.value = mtof(m) * 2.5; f.Q.value = 4;
+    env(g, t, .002, v, .22); o.connect(f).connect(g).connect(musicBus); o.start(t); o.stop(t + .3);
+  },
+  pad(t, ns, d, v = .03) {
+    ns.forEach(m => [-9, 9].forEach(det => {
+      const o = AC.createOscillator(), g = AC.createGain();
+      o.type = 'triangle'; o.frequency.value = mtof(m); o.detune.value = det;
+      g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(v, t + d * .35); g.gain.exponentialRampToValueAtTime(.0001, t + d);
+      o.connect(g).connect(musicBus); o.start(t); o.stop(t + d + .05);
+    }));
+  },
+  stab(t, ns, v = .05) { ns.forEach(m => osc('sawtooth', mtof(m), t, .14, v, musicBus, { det: rand(-12, 12) })); },
+};
+
+/* sequencer — royal-road progression (IV–V–iii–vi), eurobeat octave bass */
+const PROG = [[41, [65, 69, 72]], [43, [67, 71, 74]], [40, [64, 67, 71]], [45, [69, 72, 76]]];
+const MEL = [[77, 79, 81, 0, 84, 0, 81, 79], [79, 0, 74, 0, 79, 81, 83, 0], [83, 84, 83, 79, 76, 0, 79, 0], [81, 0, 79, 81, 84, 0, 88, 0]];
+const MELD = MEL.map(b => b.map((n, i) => { if (!n) return 0; let d = 1; while (i + d < 8 && !b[i + d]) d++; return d; }));
+const YO = [0, 2, 5, 7, 9];
+const MUS = { on: false, bpm: 160, key: 0, style: 'slots', fever: false, step: 0, next: 0, timer: 0 };
+function music(o) {
+  Object.assign(MUS, o);
+  if (AC && !MUS.on) { MUS.on = true; MUS.step = 0; MUS.next = AC.currentTime + .06; MUS.timer = setInterval(sched, 25); }
+}
+function musicStop() { MUS.on = false; clearInterval(MUS.timer); }
+function sched() {
+  if (!AC) return;
+  if (MUS.next < AC.currentTime - .2) MUS.next = AC.currentTime + .02;
+  while (MUS.next < AC.currentTime + .12) { playStep(MUS.step, MUS.next); MUS.next += 60 / MUS.bpm / 4; MUS.step++; }
+}
+function playStep(s, t) {
+  const i = s % 16, bar = (s >> 4) % 4, [r0, c0] = PROG[bar], k = MUS.key, st = MUS.style, F = MUS.fever;
+  const ch = c0.map(n => n + k), root = r0 + k, e = 60 / MUS.bpm / 4;
+  const tones = [ch[0], ch[1], ch[2], ch[0] + 12, ch[1] + 12, ch[2] + 12, ch[0] + 24, ch[2] + 12];
+  const melody = v => { if (i % 2 === 0) { const n = MEL[bar][i / 2]; if (n) I.lead(t, n + k, MELD[bar][i / 2] * e * 2 * .95, v); } };
+  if (st === 'silent') return;
+  if (st === 'finale') {
+    if (i % 4 === 0) I.kick(t);
+    if (i === 0) { I.crash(t, .5); I.taiko(t, .8); I.pad(t, [...ch, ch[0] + 12], e * 16, .035); }
+    if (i === 4 || i === 12) I.clap(t, .9);
+    if (i % 2 === 1) I.hat(t, .6);
+    if (i % 2 === 0) I.bass(t, root + (i % 4 === 2 ? 12 : 0), e * 1.8);
+    I.arp(t, tones[i % 8] + 12, 'triangle', .05);
+    if (i % 4 === 2) I.bell(t, ch[(i >> 2) % 3] + 24, .04);
+    melody(.04);
+    return;
+  }
+  if (i % 4 === 0) I.kick(t);
+  if (i === 4 || i === 12) { if (st === 'sumo') I.taiko(t, .9); else I.snare(t); }
+  if (i % 2 === 1) I.hat(t, .7);
+  if (i % 4 === 2) I.hat(t, .45, true);
+  if (F && (i === 12 || i === 14 || i === 15)) I.clap(t, .7);
+  if (F && i === 0 && bar === 0) I.crash(t, .8);
+  if (i % 2 === 0) I.bass(t, root + (i % 4 === 2 ? 12 : 0), e * 1.8);
+  if (st === 'slots') I.arp(t, tones[i % 8] + 12, 'square', .05);
+  if (st === 'sumo') {
+    if ([0, 3, 6, 10, 13].includes(i)) I.taiko(t, i === 0 ? 1 : .55);
+    if (i % 2 === 0) I.pluck(t, 72 + k + YO[(s * 3 + bar) % 5] + (i % 8 === 0 ? 12 : 0));
+  }
+  if (st === 'rev') {
+    if (i === 7 || i === 10 || i === 15) I.snare(t, .45);
+    I.arp(t, tones[(i * 3) % 8] + 12, 'sawtooth', .035);
+    if (i % 4 === 0) I.stab(t, ch.map(n => n + 12), .03);
+  }
+  if (F) { melody(.045); if (Math.random() < .3) I.bell(t, 96 + k + pick([0, 2, 4, 7, 9]), .025); }
+}
+
+/* sound effects (sfx bus) */
+const S = {
+  tick() { if (AC) osc('square', rand(900, 1800), now(), .018, .035, sfxBus); },
+  tock() { if (AC) { osc('square', 1400, now(), .03, .07, sfxBus); osc('sine', 700, now(), .05, .1, sfxBus); } },
+  kachunk() { if (!AC) return; const t = now(); osc('square', 150, t, .14, .3, sfxBus, { f2: 55 }); noise(t, .09, .35, sfxBus, { type: 'lowpass', f: 2500 }); osc('triangle', 1760, t, .2, .1, sfxBus); },
+  whoosh() { if (AC) noise(now(), .32, .4, sfxBus, { type: 'bandpass', f: 300, q: 1.2, f2: 7000 }); },
+  boom(v = 1) { if (!AC) return; const t = now(); osc('sine', 130, t, .7, v, sfxBus, { f2: 28 }); noise(t, .6, .55 * v, sfxBus, { type: 'lowpass', f: 2500, f2: 90 }); },
+  explode() { if (!AC) return; const t = now(); noise(t, 1.4, .7, sfxBus, { type: 'lowpass', f: 6000, f2: 60 }); osc('sine', 80, t, 1, .9, sfxBus, { f2: 22 }); },
+  jingle(n = 14, d = .8) { if (!AC) return; const t = now(); for (let i = 0; i < n; i++) osc('triangle', rand(2600, 4600), t + rand(0, d), .12, .05, sfxBus); },
+  rattle(ms = 1000, rate = 70) { if (!AC) return; const t = now(), n = ms / 1000 * rate; for (let i = 0; i < n; i++) osc('sine', rand(3500, 7000), t + rand(0, ms / 1000), .035, .04, sfxBus); },
+  laser() { if (AC) osc('sawtooth', 2400, now(), .3, .09, sfxBus, { f2: 180 }); },
+  shing() { if (!AC) return; const t = now(); noise(t, .5, .3, sfxBus, { type: 'highpass', f: 3000, f2: 12000 }); osc('triangle', 2093, t, .5, .08, sfxBus); osc('triangle', 3136, t + .05, .5, .06, sfxBus); },
+  screech() { if (!AC) return; const t = now(); osc('sawtooth', rand(1100, 1500), t, .12, .05, sfxBus, { f2: rand(600, 900) }); noise(t, .1, .12, sfxBus, { type: 'bandpass', f: 3000, q: 4 }); },
+  zip() { if (!AC) return; const t = now(); osc('sine', 300, t, .35, .3, sfxBus, { f2: 3200 }); noise(t, .35, .3, sfxBus, { type: 'bandpass', f: 500, q: 2, f2: 9000 }); },
+  flick() { if (AC) { osc('triangle', 2600, now(), .25, .12, sfxBus); osc('sine', 5200, now(), .15, .05, sfxBus); } },
+  fanfare() {
+    if (!AC) return; const t = now(), k = MUS.key;
+    [60, 64, 67, 72, 76, 79, 84, 88].forEach((m, i) => { osc('square', mtof(m + k), t + i * .05, .16, .06, sfxBus); osc('sawtooth', mtof(m + k + 12), t + i * .05, .12, .03, sfxBus); });
+    [72, 76, 79, 84].forEach(m => osc('sawtooth', mtof(m + k), t + .42, .7, .045, sfxBus, { det: rand(-15, 15) }));
+  },
+  /* lub-dub for d seconds, speeding up; on its own bus so it plays through the coin-toss silence */
+  heartbeat(d = 3) {
+    if (!AC) return; const t0 = now() + .02; let t = 0, iv = .8;
+    const thump = (tt, v) => {
+      osc('sine', 72, t0 + tt, .18, v, hbBus, { f2: 40 });
+      osc('triangle', 150, t0 + tt, .09, v * .35, hbBus, { f2: 70 }); // harmonic so small speakers can hear it
+      noise(t0 + tt, .06, v * .25, hbBus, { type: 'lowpass', f: 220 });
+    };
+    while (t < d - .15) { thump(t, 1); thump(t + .16, .65); t += iv; iv = Math.max(.48, iv * .88); }
+  },
+  heavenly() { if (!AC) return; const t = now(), k = MUS.key; for (let i = 0; i < 18; i++) osc('triangle', mtof(60 + k + [0, 4, 7, 11, 12, 16, 19, 23][i % 8] + 12 * Math.floor(i / 8)), t + i * .045, .9, .06, sfxBus); },
+  choir(d = 6) {
+    if (!AC) return; const t = now();
+    [60, 64, 67, 72, 76].forEach(m => [-7, 0, 7].forEach(det => {
+      const o = AC.createOscillator(), f = AC.createBiquadFilter(), g = AC.createGain();
+      o.type = 'sawtooth'; o.frequency.value = mtof(m + MUS.key); o.detune.value = det + rand(-3, 3);
+      f.type = 'bandpass'; f.frequency.value = 850; f.Q.value = 1.3;
+      g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.035, t + .8);
+      g.gain.setValueAtTime(.035, t + d - 1.5); g.gain.exponentialRampToValueAtTime(.0001, t + d);
+      o.connect(f).connect(g).connect(sfxBus); o.start(t); o.stop(t + d + .05);
+    }));
+  },
+};
+
+/* announcer voice (Web Speech) — Japanese pachinko shouts with English fallback */
+let VOICES = [];
+const loadVoices = () => { try { VOICES = speechSynthesis.getVoices(); } catch (e) { /* no speech */ } };
+if ('speechSynthesis' in window) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+const MALE = /\b(Aaron|Alex|Tom|Evan|Nathan|Reed|Daniel|Arthur|Gordon|Rishi|Oliver|Male)\b/i;
+function say(ja, en, o = {}) {
+  if (muted || AUTO || !('speechSynthesis' in window)) return null;
+  const jv = VOICES.find(v => /^ja/i.test(v.lang)), ens = VOICES.filter(v => /^en/i.test(v.lang)), us = v => /en[-_]US/i.test(v.lang);
+  const ev = (o.male && (ens.find(v => us(v) && MALE.test(v.name)) || ens.find(v => MALE.test(v.name)))) || ens.find(us) || ens[0];
+  const useJa = !!(ja && jv);
+  const text = useJa ? ja : en; if (!text) return null;
+  const u = new SpeechSynthesisUtterance(text);
+  const v = useJa ? jv : ev; if (v) u.voice = v;
+  u.lang = useJa ? 'ja-JP' : 'en-US';
+  u.pitch = o.pitch ?? 1.7; u.rate = o.rate ?? 1.25; u.volume = 1;
+  speechSynthesis.cancel(); speechSynthesis.speak(u);
+  return u;
+}
+/* speak and wait until the line finishes (falls back to a fixed time if speech is off or never reports back) */
+function sayWait(en, o, ms) {
+  return new Promise(res => {
+    let done = false; const fin = () => { if (!done) { done = true; res(); } };
+    const u = say(null, en, o);
+    if (u) { u.onend = fin; u.onerror = fin; setTimeout(fin, ms * 1.8); } else setTimeout(fin, ms);
+  });
+}
+
+/* =====================================================================
+   PARTICLES — one full-window canvas, pre-rendered sprites
+   ===================================================================== */
+const FX = (() => {
+  const cv = $('#fx'), c = cv.getContext('2d');
+  let W = 0, H = 0, D = 1, P = [], R = [], shells = [];
+  function resize() { D = Math.min(2, devicePixelRatio || 1); W = innerWidth; H = innerHeight; cv.width = W * D; cv.height = H * D; }
+  addEventListener('resize', resize); resize();
+  const SP = {};
+  function sprite(name, w, h, draw) { const s = document.createElement('canvas'); s.width = w; s.height = h; draw(s.getContext('2d'), w, h); SP[name] = s; }
+  sprite('ball', 48, 48, (g, n) => {
+    const gr = g.createRadialGradient(n * .36, n * .32, 1, n / 2, n / 2, n / 2 - 2);
+    gr.addColorStop(0, '#fff'); gr.addColorStop(.22, '#eef1f8'); gr.addColorStop(.55, '#9099ad'); gr.addColorStop(.85, '#3b4252'); gr.addColorStop(1, '#1d2129');
+    g.fillStyle = gr; g.beginPath(); g.arc(n / 2, n / 2, n / 2 - 2, 0, 7); g.fill();
+  });
+  sprite('coin', 48, 48, (g, n) => {
+    const gr = g.createRadialGradient(n * .35, n * .3, 1, n / 2, n / 2, n / 2);
+    gr.addColorStop(0, '#fff8c0'); gr.addColorStop(.45, '#ffd700'); gr.addColorStop(1, '#b07800');
+    g.fillStyle = gr; g.beginPath(); g.arc(n / 2, n / 2, n / 2 - 2, 0, 7); g.fill();
+    g.lineWidth = 3; g.strokeStyle = '#8a5a00'; g.stroke();
+    g.fillStyle = '#8a5a00'; g.font = 'bold 26px Impact, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('$', n / 2, n / 2 + 1);
+  });
+  sprite('bill', 72, 36, (g, w, h) => {
+    g.fillStyle = '#4fbf5a'; g.fillRect(0, 0, w, h); g.strokeStyle = '#1d6b2a'; g.lineWidth = 3; g.strokeRect(3, 3, w - 6, h - 6);
+    g.fillStyle = '#0d3b16'; g.font = 'bold 24px Impact, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('$', w / 2, h / 2 + 1);
+  });
+  sprite('star', 48, 48, (g, n) => {
+    g.translate(n / 2, n / 2); g.beginPath();
+    for (let i = 0; i < 10; i++) { const r = i % 2 ? 9 : 21, a = i * Math.PI / 5 - Math.PI / 2; g.lineTo(Math.cos(a) * r, Math.sin(a) * r); }
+    g.closePath(); g.fillStyle = '#ffe600'; g.shadowColor = '#fff'; g.shadowBlur = 6; g.fill(); g.lineWidth = 2; g.strokeStyle = '#ff8a00'; g.stroke();
+  });
+  sprite('petal', 32, 32, (g, n) => { g.translate(n / 2, n / 2); g.fillStyle = '#ffb7d5'; g.beginPath(); g.ellipse(0, 0, 13, 8, 0, 0, 7); g.fill(); g.fillStyle = '#ff8fbf'; g.beginPath(); g.ellipse(-4, 0, 6, 3, 0, 0, 7); g.fill(); });
+  sprite('heart', 40, 40, (g, n) => { g.translate(n / 2, n / 2 + 2); g.fillStyle = '#ff3b8d'; g.beginPath(); g.moveTo(0, 12); g.bezierCurveTo(-22, -2, -10, -20, 0, -8); g.bezierCurveTo(10, -20, 22, -2, 0, 12); g.fill(); });
+  const COLS = ['#ff004c', '#ffdd00', '#00ff6a', '#00d0ff', '#a000ff', '#ff7a00', '#ffffff', '#ff4fd8'];
+  COLS.forEach((col, i) => {
+    sprite('sp' + i, 32, 32, (g, n) => { const gr = g.createRadialGradient(n / 2, n / 2, 0, n / 2, n / 2, n / 2); gr.addColorStop(0, '#fff'); gr.addColorStop(.25, col); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(0, 0, n, n); });
+    sprite('cf' + i, 16, 8, (g, w, h) => { g.fillStyle = col; g.fillRect(0, 0, w, h); });
+  });
+  const EMO = ['💰', '💎', '🍒', '⭐', '🌸', '🎰', '🎉', '✨', '🔥', '💵'];
+  EMO.forEach((e, i) => sprite('e' + i, 56, 56, (g, n) => { g.font = '44px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(e, n / 2, n / 2 + 3); }));
+  const KIND = {
+    ball: () => ({ s: SP.ball, sz: rand(14, 22) }),
+    coin: () => ({ s: SP.coin, sz: rand(18, 30), flip: true }),
+    bill: () => ({ s: SP.bill, sz: rand(34, 48), flip: true }),
+    star: () => ({ s: SP.star, sz: rand(16, 30) }),
+    petal: () => ({ s: SP.petal, sz: rand(14, 22), wob: rand(.6, 1.6) }),
+    heart: () => ({ s: SP.heart, sz: rand(16, 28) }),
+    conf: () => ({ s: SP['cf' + (Math.random() * 8 | 0)], sz: rand(10, 18), flip: true }),
+    spark: () => ({ s: SP['sp' + (Math.random() * 8 | 0)], sz: rand(14, 34), add: true, g: 0 }),
+    emoji: () => ({ s: SP['e' + (Math.random() * EMO.length | 0)], sz: rand(26, 46) }),
+  };
+  function add(kind, x, y, vx, vy, o = {}) {
+    if (P.length > 1700) P.splice(0, P.length - 1700);
+    P.push(Object.assign({ kind, x, y, vx, vy, g: .38, dr: .99, r: rand(0, 6.3), vr: rand(-.25, .25), life: 0, ml: rand(90, 160), ph: rand(0, 6.3) }, KIND[kind](), o));
+  }
+  function fade(kind) { for (const p of P) if (p.kind === kind) p.ml = Math.min(p.ml, p.life + 18); }
+  const dens = n => Math.round(n * clamp(W * H / (1280 * 800), .45, 1)); // fewer particles on small screens
+  function burst(x, y, n = 150, kinds = ['coin', 'conf', 'star', 'spark', 'emoji', 'bill'], sp = 20) {
+    n = dens(n);
+    for (let i = 0; i < n; i++) { const a = rand(0, 6.283), v = rand(sp * .2, sp); add(pick(kinds), x, y, Math.cos(a) * v, Math.sin(a) * v - sp * .25); }
+  }
+  function rain(n, kinds = ['coin', 'bill', 'conf', 'petal'], x0 = 0, x1 = W) {
+    n = Math.max(1, dens(n));
+    for (let i = 0; i < n; i++) add(pick(kinds), rand(x0, x1), -40, rand(-1.5, 1.5), rand(1, 6), { g: .12, dr: .995, ml: 400 });
+  }
+  function pour(n, rect) {
+    n = dens(n);
+    for (let i = 0; i < n; i++) {
+      const left = Math.random() < .5;
+      add('ball', left ? rect.left + 10 : rect.right - 10, rect.top + rand(0, 40), (left ? 1 : -1) * rand(3, 13), rand(-5, 2),
+        { floor: rect.bottom - 10, bounce: rand(.3, .6), ml: rand(110, 170), g: .5, vr: 0 });
+    }
+  }
+  function cannons(n = 60) {
+    n = dens(n);
+    for (let i = 0; i < n; i++) {
+      add(pick(['conf', 'conf', 'star', 'coin']), 0, H, rand(6, 16), -rand(14, 26));
+      add(pick(['conf', 'conf', 'star', 'coin']), W, H, -rand(6, 16), -rand(14, 26));
+    }
+  }
+  function sparkle(x, y, n = 6, spd = 4) {
+    for (let i = 0; i < n; i++) { const a = rand(0, 6.283), v = rand(.5, spd); add('spark', x, y, Math.cos(a) * v, Math.sin(a) * v, { ml: rand(20, 40), g: .05, dr: .94 }); }
+  }
+  function ring(x, y, col = '#fff', max = 300, w = 10) { R.push({ x, y, r: 10, max, w, col, life: 0 }); }
+  function firework(x, y0, ty) { shells.push({ x, y: y0, ty, vy: -rand(15, 21), col: Math.random() * 8 | 0 }); }
+  function explodeShell(sh) {
+    for (let i = 0; i < 70; i++) { const a = i / 70 * 6.283, v = rand(5, 9); add('spark', sh.x, sh.y, Math.cos(a) * v, Math.sin(a) * v, { s: SP['sp' + sh.col], g: .08, dr: .955, ml: rand(50, 75) }); }
+    ring(sh.x, sh.y, COLS[sh.col], 160, 6);
+  }
+  let lastT = performance.now();
+  (function loop(tn) {
+    tn = tn || performance.now();
+    const k = clamp((tn - lastT) / 16.667, .25, 3); lastT = tn; // normalise physics to 60fps (ProMotion-safe)
+    c.setTransform(D, 0, 0, D, 0, 0); c.clearRect(0, 0, W, H);
+    for (let i = shells.length - 1; i >= 0; i--) {
+      const s = shells[i]; s.y += s.vy * k; s.vy *= Math.pow(.97, k);
+      add('spark', s.x + rand(-2, 2), s.y, 0, 1, { ml: 18, g: 0, sz: 14, s: SP['sp' + s.col] });
+      if (s.y <= s.ty || s.vy > -2.5) { explodeShell(s); shells.splice(i, 1); }
+    }
+    const alive = [];
+    for (const p of P) {
+      const dr = Math.pow(p.dr, k);
+      p.life += k; p.vx *= dr; p.vy = p.vy * dr + p.g * k;
+      p.x += (p.vx + (p.wob ? Math.sin(p.life * .06 + p.ph) * p.wob : 0)) * k; p.y += p.vy * k; p.r += p.vr * k;
+      if (p.floor && p.y > p.floor) { p.y = p.floor; p.vy *= -p.bounce; p.vx *= .85; }
+      if (p.life < p.ml && p.y < H + 80 && p.x > -120 && p.x < W + 120) alive.push(p);
+    }
+    P = alive;
+    for (let pass = 0; pass < 2; pass++) {
+      c.globalCompositeOperation = pass ? 'lighter' : 'source-over';
+      for (const p of P) {
+        if (!!p.add !== !!pass) continue;
+        c.globalAlpha = Math.min(1, (p.ml - p.life) / 25);
+        const sx = p.flip ? Math.cos(p.life * .2 + p.ph) : 1, co = Math.cos(p.r), si = Math.sin(p.r), w = p.sz, h = p.sz * p.s.height / p.s.width;
+        c.setTransform(D * co * sx, D * si * sx, -D * si, D * co, D * p.x, D * p.y);
+        c.drawImage(p.s, -w / 2, -h / 2, w, h);
+      }
+    }
+    c.globalCompositeOperation = 'lighter'; c.setTransform(D, 0, 0, D, 0, 0);
+    R = R.filter(r => {
+      r.life += k; r.r += (r.max - r.r) * (1 - Math.pow(.86, k)); const a = 1 - r.life / 30; if (a <= 0) return false;
+      c.globalAlpha = a; c.lineWidth = r.w * a + 1; c.strokeStyle = r.col; c.beginPath(); c.arc(r.x, r.y, r.r, 0, 6.283); c.stroke(); return true;
+    });
+    c.globalAlpha = 1; c.globalCompositeOperation = 'source-over';
+    requestAnimationFrame(loop);
+  })();
+  return { burst, rain, pour, cannons, sparkle, ring, firework, add, fade };
+})();
+
+/* =====================================================================
+   SCREEN EFFECTS
+   ===================================================================== */
+const GF = () => $('#gameframe').getBoundingClientRect();
+const center = () => { const r = GF(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+const framePt = (fx, fy) => { const r = GF(); return [r.left + r.width * fx, r.top + r.height * fy]; };
+function restart(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+function flash() { if (!calm) restart($('#flash'), 'go'); }
+function invert() { if (calm) return; const s = $('#shaker'); s.classList.add('inv'); setTimeout(() => s.classList.remove('inv'), 70); }
+function shake(p = 1) { const s = $('#shaker'); s.style.setProperty('--p', calm ? p * .3 : p); restart(s, 'shake'); }
+function hueTrip() { if (!calm) restart($('#huer'), 'go'); }
+function speed(on) { $('#speed').classList.toggle('on', on); }
+function fever(on) { document.body.classList.toggle('fever', on); }
+const GRADS = ['linear-gradient(#fff,#fff 40%,#ffe600 55%,#ff6a00)', 'linear-gradient(#fff,#ff9df5 45%,#ff2fd0 60%,#7b00ff)', 'linear-gradient(#fff,#9ff 45%,#00d0ff 60%,#0040ff)', 'linear-gradient(#fff,#bfff9f 45%,#00ff6a 60%,#008a3a)', 'linear-gradient(#fff,#ffb3b3 40%,#ff2a2a 60%,#900)'];
+function word(text, x, y, o = {}) {
+  const r = GF(), el = document.createElement('div');
+  el.className = 'w ' + (o.anim || 'pop'); el.textContent = text;
+  el.style.left = (x - r.left) + 'px'; el.style.top = (y - r.top) + 'px';
+  el.style.fontSize = (o.size || 10) + 'cqmin';
+  el.style.setProperty('--r', (o.rot ?? rand(-15, 15)) + 'deg');
+  el.style.backgroundImage = o.grad || pick(GRADS);
+  $('#words').appendChild(el); setTimeout(() => el.remove(), o.ms || 900);
+}
+
+/* anime cut-in panels */
+const ART = (() => {
+  let rays = '';
+  for (let i = 0; i < 16; i++) { const a = i / 16 * Math.PI * 2; rays += `<line x1="200" y1="80" x2="${(200 + Math.cos(a) * 420).toFixed(0)}" y2="${(80 + Math.sin(a) * 420).toFixed(0)}"/>`; }
+  return {
+    mika: `<svg viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ciris" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e1048"/><stop offset=".6" stop-color="#7a3cff"/><stop offset="1" stop-color="#ff7af0"/></linearGradient></defs>
+      <rect width="400" height="160" fill="#ffe6d5"/>
+      <g id="cEye"><ellipse cx="120" cy="100" rx="58" ry="50" fill="#fff"/><ellipse cx="124" cy="104" rx="40" ry="46" fill="url(#ciris)"/><circle cx="126" cy="108" r="17" fill="#120a2a"/><circle cx="106" cy="86" r="13" fill="#fff"/><circle cx="142" cy="124" r="6" fill="#fff"/>
+      <path d="M58 88 Q118 40 182 78" stroke="#1a1030" stroke-width="13" fill="none" stroke-linecap="round"/><path d="M60 58 L176 74" stroke="#3b2466" stroke-width="9" stroke-linecap="round"/></g>
+      <use href="#cEye" transform="translate(400 0) scale(-1 1)"/>
+      <ellipse cx="78" cy="150" rx="26" ry="8" fill="#ff9aa8" opacity=".6"/><ellipse cx="322" cy="150" rx="26" ry="8" fill="#ff9aa8" opacity=".6"/>
+      <path d="M0 0 H400 V34 L372 58 L346 26 L314 62 L282 22 L250 56 L218 18 L186 56 L154 20 L122 58 L90 24 L58 60 L28 28 L0 50Z" fill="#4a2c80"/></svg>`,
+    sumo: `<svg viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice"><rect width="400" height="160" fill="#f5cfa5"/>
+      <path d="M0 0 H400 V30 Q200 62 0 30Z" fill="#222"/>
+      <g id="sEye"><path d="M66 66 L182 96" stroke="#222" stroke-width="18" stroke-linecap="round"/><ellipse cx="130" cy="116" rx="42" ry="20" fill="#fff"/><circle cx="140" cy="117" r="13" fill="#111"/><circle cx="135" cy="112" r="4" fill="#fff"/><path d="M86 108 Q130 88 174 108" stroke="#3a2a1a" stroke-width="6" fill="none"/></g>
+      <use href="#sEye" transform="translate(400 0) scale(-1 1)"/>
+      <path d="M186 124 Q200 142 214 124" stroke="#c48a5a" stroke-width="5" fill="none"/>
+      <path d="M342 40 q12 22 0 34 q-12 -12 0 -34" fill="#7cd3ff"/><path d="M58 52 q10 18 0 28 q-10 -10 0 -28" fill="#7cd3ff"/></svg>`,
+    runner: `<svg viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice"><rect width="400" height="160" fill="#f2b45c"/>
+      <rect y="16" width="400" height="28" fill="#e3342f"/>
+      <ellipse cx="130" cy="102" rx="48" ry="42" fill="#fff"/><circle cx="152" cy="106" r="17" fill="#111"/><circle cx="146" cy="98" r="5" fill="#fff"/>
+      <ellipse cx="272" cy="102" rx="48" ry="42" fill="#fff"/><circle cx="294" cy="106" r="17" fill="#111"/><circle cx="288" cy="98" r="5" fill="#fff"/>
+      <path d="M80 62 L178 80 M222 80 L322 62" stroke="#111" stroke-width="11" stroke-linecap="round"/>
+      <path d="M20 120 l40 -6 M10 140 l50 -4" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/></svg>`,
+    god: `<svg viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="gg"><stop offset="0" stop-color="#fff"/><stop offset=".4" stop-color="#fff6b0"/><stop offset="1" stop-color="#ffb000" stop-opacity="0"/></radialGradient></defs>
+      <rect width="400" height="160" fill="#ffcf40"/><g stroke="#fff" stroke-width="6" opacity=".75">${rays}</g>
+      <circle cx="200" cy="80" r="150" fill="url(#gg)"/><circle cx="200" cy="80" r="58" fill="none" stroke="#fff" stroke-width="10"/></svg>`,
+  };
+})();
+let cutId = 0;
+function cutin(art, text, theme) {
+  const c = $('#cutin'), id = ++cutId;
+  c.className = theme;
+  c.innerHTML = `<div class="bg"></div><div class="lines"></div><div class="art">${ART[art]}</div><div class="txt">${text}</div>`;
+  void c.offsetWidth; c.classList.add('go'); S.shing(); S.whoosh();
+  setTimeout(() => { if (id === cutId) c.classList.remove('go'); }, 820);
+}
+
+/* =====================================================================
+   SITE: chat, ticker, wallet
+   ===================================================================== */
+const ME = ['Trevor', '#00e701', '👑'];
+const CHAT = (() => {
+  const box = $('#msgs');
+  const USERS = [['whaleboi99', '#ffb02e', '💎'], ['lucky_lou', '#4fc3ff', '🥇'], ['xX_RNG_Xx', '#ff5c8a', '🥈'], ['sumo_stan', '#7dff6b', '🥉'], ['coinflip_kate', '#c78bff', '💎'], ['degen_dave', '#ff7a45', '🥉'], ['TrevorFan42', '#00e701', '👑'], ['pachi_queen', '#ff4fd8', '💎'], ['zoomzoom', '#ffe600', '🥈'], ['moon_mart_mika', '#b38bff', '🥇'], ['grandma_gambles', '#9fe0ff', '🥉'], ['nogainz', '#ffa3a3', '🥈']];
+  const IDLE = ['gl trevor 🍀', 'this site goes hard', 'how is he this lucky', 'first time here, is it always this loud?', 'who is trevor and why is he winning', 'W site', 'the music is stuck in my head', 'RTP 777% is crazy', 'pachinko mode is peak', 'gm', 'my cat is dancing to this', 'trevor run it back', 'ok one more spin'];
+  const HYPE = {
+    slots: ['777 LETS GOOO', 'REACH REACH REACH', 'リーチ!!', 'that third reel 😰', 'come onnnn', 'SPIN TO WIN', '🎰🎰🎰'],
+    sumo: ['SUMO DIFF', 'どすこい!!', 'the big guy FLEW', 'seesaw physics are crazy', 'yokozuna energy', '💪💪💪', 'DOSUKOI'],
+    rev: ['GO RIGHT', 'LEFT LEFT LEFT', 'RIGHT!!!', 'his legs are a blender', 'bro is buffering', 'どっち?!', '🦵🌀🦵'],
+    coin: ['call it trevor', 'CALL IT', 'my heart 💀', 'the vibes are so tense', 'heads heads heads', 'THE COIN 😱', 'chat is holding its breath'],
+    jackpot: ['LETS GOOOOO', '🔥🔥🔥', '大当たり!!!', 'NO SHOT', 'W', 'TREVOR DIFF', 'my ears 😭', 'my EYES', 'send some to me pls', 'HOW', 'insane run', 'certified pachinko moment', '確変!!', 'GG', '💰💰💰', 'the screen is shaking IRL'],
+    god: ['HALLELUJAH', 'JESUS IS ON THE PAYROLL??', 'divine RTP', 'W JESUS', '🙏🙏🙏', 'claim the rain!!', 'bro got a check from heaven', '神!!!', 'blessed run', 'heaven has a cashier??'],
+  };
+  function msg(text, cls = '', user) {
+    const u = user || pick(USERS), d = document.createElement('div');
+    d.className = 'm ' + cls;
+    d.innerHTML = `<span class="lv">${u[2]}</span><b style="color:${u[1]}">${u[0]}</b><span></span>`;
+    d.lastChild.textContent = text; box.appendChild(d);
+    while (box.children.length > 40) box.firstChild.remove();
+  }
+  function hype(pool, n = 8, gap = 120) { for (let i = 0; i < n; i++) setTimeout(() => msg(pick(HYPE[pool]), 'hype'), i * gap + rand(0, gap)); }
+  function rain(amt) {
+    const d = document.createElement('div'); d.className = 'm rain';
+    d.innerHTML = `☔ <span><b>Jesus</b> is raining <em>${amt}</em> on chat!</span><button>Claim</button>`;
+    box.appendChild(d);
+  }
+  for (let i = 0; i < 9; i++) msg(pick(IDLE));
+  (function idle() { msg(pick(IDLE)); setTimeout(idle, rand(1100, 2600)); })();
+  setInterval(() => { $('#online').textContent = (4800 + (Math.random() * 140 | 0)).toLocaleString(); }, 2000);
+  return { msg, hype, rain };
+})();
+
+const fmt = n => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+(function ticker() {
+  const names = ['Hidden', 'whaleboi99', 'Hidden', 'xX_RNG_Xx', 'lucky_lou', 'Hidden', 'sumo_stan', 'coinflip_kate', 'Hidden', 'zoomzoom', 'degen_dave', 'pachi_queen'];
+  const games = ['TREVOR FEVER 777', 'Sumo Seesaw', 'Leg Rev', 'Coin Flip', 'Plinko', 'Crash', 'Mines', 'Divine Payout'];
+  let h = '';
+  for (let i = 0; i < 26; i++) h += `${games[i % games.length]} · ${names[i % names.length]} · ${rand(1.2, 77).toFixed(2)}× · <em>${fmt(rand(2, 900))}</em><span class="sep">|</span>`;
+  $('#ticker').innerHTML = h + h;
+})();
+
+let balance = 1;
+function countTo(el, from, to, ms, tick) {
+  const id = (el._cid = (el._cid || 0) + 1), t0 = performance.now(); let lt = 0;
+  (function f(n) {
+    if (el._cid !== id) return;
+    const u = Math.min(1, (n - t0) / ms);
+    el.textContent = fmt(from + (to - from) * (1 - Math.pow(1 - u, 3)));
+    if (tick && n - lt > 45 && u < 1) { lt = n; S.tick(); }
+    if (u < 1) requestAnimationFrame(f);
+  })(t0);
+}
+function setBalance(to, ms = 800) { const from = balance; balance = to; countTo($('#balTxt'), from, to, ms); restart($('#bal'), 'bump'); }
+function hot(id, txt) { const b = $(id); b.textContent = txt; restart(b, 'hot'); }
+
+/* =====================================================================
+   STATIC SCENE BUILD
+   ===================================================================== */
+const SYM = ['🍒', '🍋', '🔔', '💎', '7', '🍉', '⭐', '🍀'], SEVEN = 4;
+$$('#s1 .strip').forEach(s => { for (let c = 0; c < 3; c++) SYM.forEach(x => { const d = document.createElement('div'); if (x === '7') d.innerHTML = '<b class="seven">7</b>'; else d.textContent = x; s.appendChild(d); }); });
+$$('#s1 .bulbrow').forEach(row => { for (let i = 0; i < 18; i++) { const b = document.createElement('div'); b.className = 'bulb'; row.appendChild(b); } });
+
+const NS = 'http://www.w3.org/2000/svg';
+(function buildSumo() {
+  let h = '';
+  for (let i = 0; i < 44; i++) {
+    const x = rand(-320, 1120), y = rand(-170, 110), hue = rand(0, 360) | 0;
+    h += `<rect class="stick" x="${x.toFixed(0)}" y="${y.toFixed(0)}" width="6" height="38" rx="3" fill="hsl(${hue},100%,70%)" stroke="hsl(${hue},100%,55%)" stroke-width="3" style="animation-delay:-${rand(0, .7).toFixed(2)}s"/>`;
+  }
+  $('#sticks').innerHTML = h;
+  h = '<line x1="-600" y1="-196" x2="1400" y2="-196" stroke="#2a1a10" stroke-width="3"/>';
+  for (let x = -480; x <= 1280; x += 110)
+    h += `<g class="lantern" style="animation-delay:-${rand(0, 1.2).toFixed(2)}s"><line x1="${x}" y1="-196" x2="${x}" y2="-184" stroke="#2a1a10" stroke-width="3"/><rect x="${x - 14}" y="-186" width="28" height="7" fill="#222"/><ellipse cx="${x}" cy="-156" rx="24" ry="30" fill="url(#lant)"/><rect x="${x - 14}" y="-130" width="28" height="7" fill="#222"/></g>`;
+  $('#lanterns').innerHTML = h;
+  const sumo = belt => `<ellipse cx="-24" cy="-10" rx="17" ry="12" fill="#f0c296"/><ellipse cx="24" cy="-10" rx="17" ry="12" fill="#f0c296"/>
+    <ellipse cx="-56" cy="-82" rx="15" ry="27" fill="#f0c296" transform="rotate(-30 -56 -82)"/>
+    <ellipse cx="56" cy="-82" rx="15" ry="27" fill="#f0c296" transform="rotate(30 56 -82)"/>
+    <circle cx="0" cy="-66" r="56" fill="#f5cfa5" stroke="#c48a5a" stroke-width="3"/>
+    <rect x="-52" y="-46" width="104" height="22" rx="8" fill="${belt}"/><rect x="-10" y="-46" width="20" height="42" fill="${belt}"/>
+    <circle cx="0" cy="-132" r="27" fill="#f5cfa5" stroke="#c48a5a" stroke-width="3"/>
+    <path d="M-27 -136 Q0 -168 27 -136 Q0 -152 -27 -136" fill="#222"/><ellipse cx="0" cy="-163" rx="10" ry="8" fill="#222"/>
+    <circle cx="-9" cy="-134" r="3"/><circle cx="9" cy="-134" r="3"/>
+    <path d="M-8 -120 Q0 -113 8 -120" stroke="#000" fill="none" stroke-width="2.5"/>
+    <ellipse cx="-17" cy="-124" rx="5" ry="3" fill="#f99" opacity=".6"/><ellipse cx="17" cy="-124" rx="5" ry="3" fill="#f99" opacity=".6"/>`;
+  $('#sumoA').innerHTML = '<circle id="aura" cx="0" cy="-85" r="130" fill="url(#auraG)" opacity="0"/>' + sumo('#1d3b8f') + '<text id="bag" x="0" y="-188" font-size="60" text-anchor="middle" opacity="0">💰</text>';
+  $('#sumoB').innerHTML = sumo('#b3262e');
+})();
+(function streaks() {
+  const hl = $('#hl');
+  for (let i = 0; i < 26; i++) {
+    const s = document.createElement('i');
+    s.style.top = rand(2, 96) + '%'; s.style.width = rand(8, 26) + 'cqw'; s.style.opacity = rand(.3, .8).toFixed(2);
+    s.style.animationDuration = rand(.16, .34).toFixed(2) + 's'; s.style.animationDelay = -rand(0, .3).toFixed(2) + 's';
+    hl.appendChild(s);
+  }
+})();
+(function shelves() {
+  const sh = $('#shelves');
+  for (let r = 0; r < 4; r++) {
+    const s = document.createElement('div'); s.className = 'shelf';
+    for (let i = 0; i < 26; i++) { const b = document.createElement('i'); b.style.height = rand(45, 95) + '%'; b.style.background = `hsl(${rand(0, 360) | 0},70%,${rand(45, 65) | 0}%)`; s.appendChild(b); }
+    sh.appendChild(s);
+  }
+})();
+
+/* =====================================================================
+   ENGINE
+   ===================================================================== */
+function frames(fn) {
+  const t0 = performance.now();
+  return new Promise(res => { (function f(n) { if (fn(Math.max(0, n - t0))) res(); else requestAnimationFrame(f); })(t0); });
+}
+async function show(id) {
+  restart($('#wipe'), 'go'); S.whoosh();
+  await wait(210);
+  fever(false); MUS.fever = false; FX.fade('ball');
+  $$('.scene').forEach(s => s.classList.remove('active'));
+  $(id).classList.add('active');
+}
+async function jackpot(o, n, from, to) {
+  const jp = $('#jp'), [cx, cy] = center(), r = GF();
+  $('#jpKanji').textContent = o.kanji; $('#jpTier').textContent = o.tier; $('#jpSub').textContent = o.sub;
+  jp.className = 't' + n; void jp.offsetWidth; jp.classList.add('show');
+  countTo($('#jpAmt'), from, to, 650, true);
+  fever(true);
+  if (!MUS.fever) { MUS.fever = true; MUS.step = 0; } // don't restart the drop if it already hit (coin toss)
+  flash(); invert(); shake(1.6); hueTrip(); speed(true);
+  S.explode(); S.fanfare(); S.jingle(20, 1); S.rattle(1300, 80);
+  say(o.ja, o.en);
+  FX.burst(cx, cy, 220); FX.cannons(50); FX.pour(170, r);
+  FX.ring(cx, cy, '#fff', 600, 16);
+  setTimeout(() => FX.ring(cx, cy, '#ff0', 500, 10), 120);
+  setTimeout(() => FX.ring(cx, cy, '#f0f', 420, 8), 240);
+  for (let i = 0; i < 3; i++) setTimeout(() => FX.firework(rand(r.left + r.width * .15, r.right - r.width * .15), r.bottom, rand(r.top + r.height * .1, r.top + r.height * .45)), i * 180);
+  CHAT.hype('jackpot', 10, 90);
+  setBalance(to); hot('#fWin', fmt(to));
+  $('#vip').style.width = Math.min(100, 14 + n * 20) + '%';
+  await wait(1350);
+  jp.classList.remove('show'); speed(false);
+}
+
+/* =====================================================================
+   SCENE 1 — PACHISLOT with REACH
+   ===================================================================== */
+async function scene1() {
+  music({ style: 'slots', key: 0, bpm: 164 });
+  const sc = $('#s1'), reels = $$('#s1 .reel'), strips = $$('#s1 .strip'), cab = $('#s1 .cabinet'), rs = $('#s1 .reels'), st = $('#s1status');
+  const h = reels[0].clientHeight, L = SYM.length * h;
+  $$('#s1 .strip div').forEach(d => d.style.height = h + 'px');
+  sc.classList.remove('alert'); cab.classList.remove('won'); rs.classList.remove('won'); reels[2].classList.remove('aura');
+  st.textContent = '!!! SPINNING !!!';
+  const tr = (s, v) => { s.style.transform = `translateY(${-(L + mod(v, L))}px)`; };
+  const y = strips.map(() => rand(0, L)), stopAt = [1300, 1700], stopped = [0, 0];
+  strips.forEach(s => { s.style.transition = 'none'; s.style.filter = 'blur(4px)'; });
+  const V = h * 44; let last = 0, dec = null, lastCell = null;
+  const clk = setInterval(S.tick, 28);
+  const amb = setInterval(() => { const r = GF(); FX.sparkle(rand(r.left, r.right), rand(r.top, r.bottom), 4, 3); }, 60);
+  CHAT.hype('slots', 3, 400);
+  const stopReel = i => {
+    const m = mod(y[i], L), tgt = SEVEN * h <= m ? L + SEVEN * h : SEVEN * h, s = strips[i];
+    s.style.filter = 'none'; s.style.transition = 'transform .3s cubic-bezier(.25,1.8,.5,1)'; s.style.transform = `translateY(${-tgt}px)`;
+    restart(reels[i], 'land'); S.kachunk();
+    const rr = reels[i].getBoundingClientRect(); FX.sparkle(rr.left + rr.width / 2, rr.top + rr.height / 2, 30, 7);
+  };
+  const reach = () => {
+    sc.classList.add('alert'); st.textContent = 'リーチ!! REACH!!'; reels[2].classList.add('aura'); speed(true);
+    cutin('mika', 'リーチ!!', 'red'); say('リーチ!', 'Reach!'); S.laser(); MUS.bpm = 176;
+    const [x1, y1] = framePt(.2, .3), [x2, y2] = framePt(.8, .72);
+    word('リーチ!!', x1, y1, { size: 9 }); setTimeout(() => word('激アツ!!', x2, y2, { size: 9 }), 150);
+    CHAT.hype('slots', 4, 100);
+  };
+  await frames(t => {
+    const dt = Math.min(.05, (t - last) / 1000); last = t;
+    for (let i = 0; i < 2; i++) {
+      if (stopped[i]) continue;
+      if (t >= stopAt[i]) { stopped[i] = 1; stopReel(i); if (i === 1) reach(); }
+      else { y[i] -= V * dt; tr(strips[i], y[i]); }
+    }
+    if (t < 1900) { y[2] -= V * dt; tr(strips[2], y[2]); }
+    else {
+      if (!dec) { const T0 = y[2], base = T0 - 24 * h, yT = SEVEN * h + L * Math.floor((base - SEVEN * h) / L); dec = { yT, D: T0 - yT }; clearInterval(clk); }
+      const u = Math.min(1, (t - 1900) / 1100), yy = dec.yT + dec.D * (1 - u) * (1 - u);
+      tr(strips[2], yy); strips[2].style.filter = `blur(${(4 * (1 - u) * (1 - u)).toFixed(2)}px)`;
+      const cell = Math.floor(yy / h); if (cell !== lastCell) { lastCell = cell; S.tock(); }
+    }
+    return t >= 3000;
+  });
+  clearInterval(clk); clearInterval(amb);
+  sc.classList.remove('alert'); reels[2].classList.remove('aura');
+  cab.classList.add('won'); rs.classList.add('won'); st.textContent = '★ 7 7 7 ★'; S.kachunk();
+  const rr = rs.getBoundingClientRect();
+  FX.burst(rr.left - 10, rr.top + rr.height / 2, 40, ['star', 'spark', 'emoji'], 14);
+  FX.burst(rr.right + 10, rr.top + rr.height / 2, 40, ['star', 'spark', 'emoji'], 14);
+  await wait(220);
+}
+
+/* =====================================================================
+   SCENE 2 — SUMO SEESAW
+   ===================================================================== */
+async function scene2() {
+  music({ style: 'sumo', key: 2, bpm: 168 });
+  const svg = $('#s2 svg'), A = $('#sumoA'), B = $('#sumoB'), plank = $('#plank'), dust = $('#dust'), bag = $('#bag'), aura = $('#aura');
+  bag.setAttribute('opacity', 0); aura.setAttribute('opacity', 0); aura.classList.remove('auraP'); dust.innerHTML = '';
+  const HALF = 300; let th = 15, lastK = 0, launched = false, ax = 0, ay = 0;
+  const seat = (dx, a) => { const r = a * Math.PI / 180, c = Math.cos(r), s = Math.sin(r); return [400 + dx * c + 10 * s, 380 + dx * s - 10 * c]; };
+  const place = (el, x, y, r) => el.setAttribute('transform', `translate(${x} ${y}) rotate(${r} 0 -70)`);
+  const toScreen = (x, y) => { const p = svg.createSVGPoint(); p.x = x; p.y = y; const q = p.matrixTransform(svg.getScreenCTM()); return [q.x, q.y]; };
+  const puff = (x, y) => {
+    for (let i = -1; i <= 1; i++) {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', x + i * 40); c.setAttribute('cy', y); c.setAttribute('r', 18); c.setAttribute('fill', '#f3e0b5'); c.setAttribute('class', 'puff');
+      dust.appendChild(c); setTimeout(() => c.remove(), 600);
+    }
+  };
+  const landing = k => {
+    const [px, py] = seat(k % 2 ? 200 : -200, -th); puff(px, py);
+    S.boom(.45 + k * .05);
+    const [sx, sy] = toScreen(px, py);
+    FX.ring(sx, sy, '#ffe7b0', 120 + k * 22, 8); FX.sparkle(sx, sy, 12, 6);
+    word(pick(['ドーン!!', 'ドスン!!', 'バーン!!', 'ズシン!!']), sx, sy - 50, { size: 6 + k * .5 });
+    shake(.35 + k * .12);
+  };
+  say('どすこい!', 'Dosukoi!');
+  setTimeout(() => cutin('sumo', 'どすこい!!', 'blue'), 1200);
+  CHAT.hype('sumo', 5, 350);
+  const fw = setInterval(() => { const r = GF(); FX.firework(rand(r.left + r.width * .1, r.right - r.width * .1), r.bottom, rand(r.top + r.height * .05, r.top + r.height * .3)); }, 420);
+  await frames(t => {
+    if (t < 3000) {
+      const k = Math.floor(t / HALF), u = (t % HALF) / HALF;
+      if (k !== lastK) { landing(lastK); lastK = k; }
+      th += ((k % 2 === 0 ? 15 : -15) - th) * .4;
+      const hm = 50 + k * 28, hgt = 4 * hm * u * (1 - u), sp = k >= 5 ? u * 360 : 0;
+      const [lx, ly] = seat(-200, th), [rx, ry] = seat(200, th);
+      if (k % 2 === 0) { place(A, lx, ly - hgt, -sp); place(B, rx, ry, 0); ax = lx; ay = ly - hgt; }
+      else { place(A, lx, ly, 0); place(B, rx, ry - hgt, sp); ax = lx; ay = ly; }
+      plank.setAttribute('transform', `translate(400 380) rotate(${th})`);
+      return false;
+    }
+    if (!launched) { launched = true; S.zip(); S.boom(1); say('よこづな!', 'Yokozuna!'); }
+    th += (15 - th) * .4; plank.setAttribute('transform', `translate(400 380) rotate(${th})`);
+    const [rx, ry] = seat(200, th); place(B, rx, ry, 0);
+    const e = 1 - Math.pow(1 - Math.min(1, (t - 3000) / 400), 3);
+    place(A, ax + (400 - ax) * e, ay + (40 - ay) * e - Math.sin(e * Math.PI) * 120, -720 * e);
+    if (e >= 1) {
+      bag.setAttribute('opacity', 1); aura.setAttribute('opacity', 1); aura.classList.add('auraP');
+      const [sx, sy] = toScreen(400, -60);
+      FX.burst(sx, sy, 80, ['star', 'spark', 'coin'], 14); word('横綱!!', sx, sy - 40, { size: 11, anim: 'zoom' });
+      const r = GF(); for (let i = 0; i < 3; i++) FX.firework(r.left + r.width * (.25 + i * .25), r.bottom, r.top + r.height * .2);
+      return true;
+    }
+    return false;
+  });
+  clearInterval(fw);
+  await wait(150);
+}
+
+/* =====================================================================
+   SCENE 3 — LEG REV
+   ===================================================================== */
+async function scene3() {
+  music({ style: 'rev', key: 3, bpm: 186 });
+  const r = $('#runner'), bl = $('#boardL'), br = $('#boardR'), zip = $('#zip'), trail = $('#trail'), hl = $('#hl'), which = $('#which'), s3 = $('#s3');
+  r.style.transition = 'none'; r.style.transform = ''; zip.style.display = 'none'; trail.classList.remove('go'); which.style.display = '';
+  br.textContent = '???'; br.classList.remove('win', 'on'); bl.classList.remove('on');
+  $$('#s3 .ghost').forEach(g => g.remove());
+  let dir = -1, nextFlip = 0, nextDust = 0, flips = 0, eng = null;
+  if (AC) {
+    const t = now(), g = AC.createGain(), lg = AC.createGain(), lfo = AC.createOscillator();
+    const o1 = AC.createOscillator(), o2 = AC.createOscillator();
+    o1.type = o2.type = 'sawtooth'; o2.detune.value = 30;
+    [o1, o2].forEach(o => { o.frequency.setValueAtTime(55, t); o.frequency.linearRampToValueAtTime(210, t + 3); o.connect(g); });
+    lfo.frequency.setValueAtTime(22, t); lfo.frequency.linearRampToValueAtTime(48, t + 3);
+    lg.gain.value = .05; g.gain.value = .06; lfo.connect(lg).connect(g.gain); g.connect(sfxBus);
+    o1.start(); o2.start(); lfo.start(); eng = [o1, o2, lfo];
+  }
+  const ghost = () => {
+    const g = r.cloneNode(true); g.removeAttribute('id'); g.classList.add('ghost');
+    g.style.setProperty('--h', (rand(0, 360) | 0) + 'deg'); g.style.transform = r.style.transform;
+    r.parentNode.insertBefore(g, r); setTimeout(() => g.remove(), 360);
+  };
+  say('どっち!?', 'Which way?!');
+  setTimeout(() => cutin('runner', '全力疾走!!', 'green'), 900);
+  CHAT.hype('rev', 5, 300);
+  await frames(t => {
+    if (t >= nextFlip) {
+      dir = -dir; flips++; nextFlip = t + rand(110, 320);
+      S.screech(); bl.classList.toggle('on', dir < 0); br.classList.toggle('on', dir > 0); hl.classList.toggle('flip', dir < 0);
+      ghost();
+      if (flips % 2 === 0) { const [x, y] = framePt(rand(.15, .85), rand(.32, .72)); word(pick(['ギュルルル!!', 'ブロロロ!!', 'ズザザッ!!', 'キキーッ!!']), x, y, { size: rand(6, 8.5) }); }
+    }
+    r.style.transform = `translate(${rand(-.8, .8).toFixed(2)}cqmin,${rand(-.6, .6).toFixed(2)}cqmin) scaleX(${dir})`;
+    if (t >= nextDust) {
+      nextDust = t + 50; const d = document.createElement('div'); d.className = 'dust';
+      d.style.left = `calc(50% + ${(-dir * 8 - 4.5).toFixed(1)}cqmin)`; d.style.setProperty('--dx', `${(-dir * rand(8, 18)).toFixed(1)}cqmin`);
+      s3.appendChild(d); setTimeout(() => d.remove(), 520);
+    }
+    return t >= 3000;
+  });
+  if (eng) eng.forEach(o => o.stop());
+  which.style.display = 'none'; hl.classList.remove('flip');
+  say('いけー!', 'Go go go!'); S.zip(); S.boom(.6);
+  bl.classList.remove('on'); br.classList.add('on', 'win'); br.textContent = '★ JACKPOT ★';
+  r.style.transform = 'scaleX(1)'; void r.offsetWidth;
+  r.style.transition = 'transform .26s ease-in'; r.style.transform = 'translateX(120cqw) scaleX(1)';
+  trail.classList.add('go'); zip.style.display = 'block';
+  const b = br.getBoundingClientRect(); FX.burst(b.left + b.width / 2, b.top + b.height / 2, 80, ['star', 'spark', 'emoji', 'coin'], 14);
+  const [zx, zy] = framePt(.5, .78); word('ズドーン!!', zx, zy, { size: 9 });
+  await wait(380);
+}
+
+/* =====================================================================
+   SCENE 4 — THE COIN TOSS
+   silence → the question → 1s stare → "Call it." + 3s flip (darkness closes in, heartbeat)
+   → coin lands on JACKPOT and every sound slams back in at once
+   ===================================================================== */
+const STRANGER = { pitch: .55, rate: .82, male: true };
+function setBusGain(bus, v) { const t = now(); bus.gain.cancelScheduledValues(t); bus.gain.setValueAtTime(v, t); }
+async function scene4() {
+  // hard cut: all music, effects and voices stop the instant the scene appears
+  if (AC) { setBusGain(musicBus, 0); setBusGain(sfxBus, 0); }
+  MUS.style = 'silent'; MUS.fever = false;
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+  const sc = $('#s4'), wrap = $('#coinwrap'), coin = $('#coin'), vig = $('#vig'), bub = $('#bubble'), vtx = $('#vortex');
+  wrap.style.transition = 'none'; wrap.style.transform = ''; coin.style.transform = ''; coin.classList.remove('win');
+  vtx.classList.remove('rainbow'); vtx.style.opacity = 0;
+  sc.style.setProperty('--g', 0); sc.style.setProperty('--b', 1); vig.style.opacity = 0;
+  const Q = 'What’s the most you’ve ever lost on a coin toss?';
+  bub.textContent = Q;
+  CHAT.hype('coin', 3, 700);
+  await wait(250);
+  await sayWait(Q, STRANGER, 2800);
+  await wait(1000); // the stare
+
+  // the flip
+  bub.textContent = 'Call it.';
+  say(null, 'Call it.', STRANGER);
+  S.heartbeat(3);
+  const sr = sc.getBoundingClientRect(), W0 = sr.width, H0 = sr.height, rEnd = .19 * Math.min(W0, H0), lift = H0 * .27;
+  vig.style.setProperty('--rw', (1.25 * W0) + 'px'); vig.style.setProperty('--rh', (1.25 * H0) + 'px'); vig.style.opacity = 1;
+  await frames(t => {
+    const u = Math.min(1, t / 3000), e = u * u * (3 - 2 * u);
+    wrap.style.transform = `translateY(${-4 * lift * u * (1 - u)}px)`;
+    coin.style.transform = `rotateX(${360 * 12 * (1 - Math.pow(1 - u, 2))}deg)`;
+    sc.style.setProperty('--g', u.toFixed(3)); sc.style.setProperty('--b', (1 - .45 * u).toFixed(3));
+    const cr = coin.getBoundingClientRect(), ccx = cr.left + cr.width / 2, ccy = cr.top + cr.height / 2;
+    vig.style.setProperty('--vx', ((ccx - sr.left) / W0 * 100).toFixed(1) + '%');
+    vig.style.setProperty('--vy', ((ccy - sr.top) / H0 * 100).toFixed(1) + '%');
+    vig.style.setProperty('--rw', (1.25 * W0 + (rEnd - 1.25 * W0) * e).toFixed(1) + 'px');
+    vig.style.setProperty('--rh', (1.25 * H0 + (rEnd - 1.25 * H0) * e).toFixed(1) + 'px');
+    FX.sparkle(ccx, ccy, 1, 2);
+    return u >= 1;
+  });
+
+  // JACKPOT side up: everything comes back at that instant
+  if (AC) { setBusGain(musicBus, .5); setBusGain(sfxBus, .8); musicLP.frequency.cancelScheduledValues(now()); musicLP.frequency.setValueAtTime(18000, now()); }
+  music({ style: 'slots', key: 3, bpm: 176, fever: true }); MUS.step = 0;
+  fever(true); flash(); invert(); shake(1.4); S.explode(); S.flick(); S.jingle(14, .4);
+  sc.style.setProperty('--g', 0); sc.style.setProperty('--b', 1);
+  vtx.classList.add('rainbow'); vtx.style.opacity = 1; vig.style.opacity = 0;
+  coin.classList.add('win');
+  wrap.style.transition = 'transform .32s cubic-bezier(.3,1.6,.5,1)'; wrap.style.transform = 'translate(-10cqmin,-6cqmin) scale(3)';
+  bub.textContent = 'Jackpot.';
+  const cr = coin.getBoundingClientRect(); FX.burst(cr.left + cr.width / 2, cr.top + cr.height / 2, 60, ['coin', 'spark', 'star'], 14);
+  await wait(380);
+}
+
+/* =====================================================================
+   SCENE 5 — DIVINE PAYOUT
+   ===================================================================== */
+async function scene5(total) {
+  music({ style: 'finale', key: 5, bpm: 150, fever: true }); MUS.step = 0;
+  fever(true);
+  $('#checkAmt').textContent = fmt(0); $('#s5amt').textContent = fmt(total);
+  setTimeout(() => cutin('god', '神降臨!!', 'gold'), 60);
+  say('かみ、こうりん!', 'Divine descent!');
+  S.choir(7); S.heavenly(); setTimeout(S.heavenly, 1000);
+  const rainT = setInterval(() => FX.rain(5, ['coin', 'bill', 'petal', 'conf', 'ball', 'heart', 'star']), 70);
+  await wait(1400);
+  countTo($('#checkAmt'), 0, total, 1100, true); S.jingle(30, 1.2);
+  say(null, 'Hallelujah!', { pitch: 1.3, rate: .9 });
+  await wait(500);
+  flash(); shake(1.2); hueTrip(); S.explode(); S.fanfare();
+  const r = GF(), ck = $('#s5 .check').getBoundingClientRect();
+  FX.burst(ck.left + ck.width / 2, ck.top + ck.height / 2, 260); FX.cannons(70); FX.pour(200, r); S.rattle(2000, 70);
+  const fw = setInterval(() => { const q = GF(), fx = Math.random() < .5 ? rand(.06, .3) : rand(.7, .94); FX.firework(q.left + q.width * fx, q.bottom, rand(q.top + q.height * .05, q.top + q.height * .4)); }, 280);
+  CHAT.hype('god', 14, 110); setTimeout(() => CHAT.rain(fmt(total)), 900);
+  restart($('#bal'), 'bump');
+  await wait(1400);
+  say(null, 'Trevor wins big!', { pitch: 1.2, rate: 1 });
+  await wait(1200);
+  $('#replay').style.display = 'block';
+  setTimeout(() => clearInterval(rainT), 3500);
+  setTimeout(() => clearInterval(fw), 3000);
+  setTimeout(() => {
+    if (running || !AC) return;
+    musicBus.gain.setTargetAtTime(.0001, now(), .8);
+    setTimeout(() => { if (!running) { musicStop(); musicBus.gain.cancelScheduledValues(now()); musicBus.gain.setValueAtTime(.5, now()); fever(false); } }, 3500);
+  }, 7000);
+}
+
+/* =====================================================================
+   RUN
+   ===================================================================== */
+const BASE = 12;
+const FIRST = { kanji: '大当たり!!', tier: 'BIG WIN', sub: 'TRIPLE SEVENS!!!', ja: 'おおあたり!', en: 'Jackpot!' };
+const ROUNDS = [
+  { id: '#s2', play: scene2, game: 'Sumo Seesaw', mult: 3, kanji: '確変突入!!', tier: 'MEGA WIN', sub: 'SEESAW SUPREMACY! · 3× MULTIPLIER', ja: 'かくへん とつにゅう!', en: 'Mega win!', hype: 'sumo' },
+  { id: '#s3', play: scene3, game: 'Leg Rev', mult: 2.5, kanji: '激アツ!!', tier: 'ULTRA WIN', sub: 'CORRECT DIRECTION! · 2.5× MULTIPLIER', ja: 'げきあつ!', en: 'Ultra win!', hype: 'rev' },
+  { id: '#s4', play: scene4, game: 'Coin Flip', mult: 2.4, kanji: '超・大当たり!!', tier: 'INSANE WIN', sub: 'THE COIN HAS SPOKEN. · 2.4× MULTIPLIER', ja: 'ちょう おおあたり!', en: 'Insane win!', hype: 'coin' },
+];
+async function run() {
+  if (running) return; running = true;
+  initAudio();
+  // iOS only allows speech that is first started inside a tap: unlock it now, synchronously
+  if (!muted && !AUTO && 'speechSynthesis' in window) { try { const u = new SpeechSynthesisUtterance(' '); u.volume = 0; speechSynthesis.speak(u); } catch (e) { /* no speech */ } }
+  if (AC) { const t = now(); setBusGain(musicBus, .5); setBusGain(sfxBus, .8); musicLP.frequency.cancelScheduledValues(t); musicLP.frequency.setValueAtTime(18000, t); }
+  $('#betBtn').disabled = true; $('#betBtn').textContent = 'Betting…';
+  $('#start').style.display = 'none'; $('#replay').style.display = 'none';
+  balance = 1; setBalance(0, 300); $('#fWin').textContent = fmt(0);
+  $$('.ladder span').forEach(s => s.classList.remove('on')); $('#gauge').style.width = '0%'; $('#vip').style.width = '14%';
+  CHAT.msg('placed a $1.00 bet on TREVOR FEVER 777', 'hype', ME);
+
+  $('#fGame').textContent = 'Mega Slots';
+  await show('#s1'); await scene1();
+  let total = BASE;
+  $('#L0').classList.add('on'); $('#gauge').style.width = '25%';
+  await jackpot(FIRST, 1, 0, total);
+
+  for (let n = 0; n < ROUNDS.length; n++) {
+    const r = ROUNDS[n], from = total;
+    $('#fGame').textContent = r.game;
+    await show(r.id); await r.play();
+    total = Math.round(total * r.mult * 100) / 100;
+    $('#L' + (n + 1)).classList.add('on'); $('#gauge').style.width = (25 * (n + 2)) + '%';
+    await jackpot(r, n + 2, from, total);
+  }
+
+  $('#fGame').textContent = 'Divine Payout';
+  $('#checkMemo').textContent = `MEMO: $${BASE} × ${ROUNDS.map(r => r.mult).join(' × ')}`;
+  await show('#s5'); await scene5(total);
+  CHAT.msg(`cashed out ${fmt(total)} 🙏`, 'hype', ME);
+  $('#betBtn').disabled = false; $('#betBtn').textContent = 'Bet';
+  running = false;
+}
+
+/* controls */
+function setCalm(v) { calm = v; document.body.classList.toggle('calm', v); $('#calmChk').checked = v; $('#tFlash').classList.toggle('off', v); }
+$('#calmChk').onchange = e => setCalm(e.target.checked);
+$('#tFlash').onclick = () => setCalm(!calm);
+$('#tSound').onclick = () => {
+  muted = !muted; $('#tSound').textContent = muted ? '🔇' : '🔊';
+  if (master) master.gain.setTargetAtTime(muted ? 0 : .85, now(), .02);
+  if (muted && 'speechSynthesis' in window) speechSynthesis.cancel();
+};
+{
+  const de = document.documentElement, req = de.requestFullscreen || de.webkitRequestFullscreen;
+  if (!req) $('#tFull').style.display = 'none'; // iPhone Safari has no page fullscreen
+  $('#tFull').onclick = () => {
+    if (!(document.fullscreenElement || document.webkitFullscreenElement)) req?.call(de);
+    else (document.exitFullscreen || document.webkitExitFullscreen)?.call(document);
+  };
+}
+$('#go').onclick = run; $('#replay').onclick = run; $('#betBtn').onclick = run;
+$('#msgs').addEventListener('click', e => {
+  const b = e.target.closest('.rain button'); if (!b || b.disabled) return;
+  b.disabled = true; b.textContent = 'Claimed ✓';
+  const r = b.getBoundingClientRect(); FX.burst(r.left + r.width / 2, r.top, 40, ['coin', 'spark', 'star'], 10); S.jingle(8, .3);
+  CHAT.msg('claimed $0.01 from the rain 🙏', 'hype', ME);
+});
+/* attract mode: drifting sakura over the game while idle */
+setInterval(() => { if (running) return; const r = GF(); FX.add('petal', rand(r.left, r.right), r.top - 20, rand(-1, 1), rand(.5, 1.5), { g: .02, dr: 1, ml: 420 }); }, 260);
+if (AUTO) setTimeout(run, 300);
+</script>
+</body>
+</html>
