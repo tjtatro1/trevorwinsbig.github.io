@@ -794,29 +794,33 @@ const S = {
   },
 };
 
-/* announcer voice (Web Speech) — Japanese pachinko shouts with English fallback */
+/* announcer voice (Web Speech), English voices only */
 let VOICES = [];
 const loadVoices = () => { try { VOICES = speechSynthesis.getVoices(); } catch (e) { /* no speech */ } };
 if ('speechSynthesis' in window) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
 const MALE = /\b(Aaron|Alex|Tom|Evan|Nathan|Reed|Daniel|Arthur|Gordon|Rishi|Oliver|Male)\b/i;
-function say(ja, en, o = {}) {
-  if (muted || AUTO || !('speechSynthesis' in window)) return null;
-  const jv = VOICES.find(v => /^ja/i.test(v.lang)), ens = VOICES.filter(v => /^en/i.test(v.lang)), us = v => /en[-_]US/i.test(v.lang);
-  const ev = (o.male && (ens.find(v => us(v) && MALE.test(v.name)) || ens.find(v => MALE.test(v.name)))) || ens.find(us) || ens[0];
-  const useJa = !!(ja && jv);
-  const text = useJa ? ja : en; if (!text) return null;
+function speak(text, o, voice) {
+  if (muted || AUTO || !text || !('speechSynthesis' in window)) return null;
   const u = new SpeechSynthesisUtterance(text);
-  const v = useJa ? jv : ev; if (v) u.voice = v;
-  u.lang = useJa ? 'ja-JP' : 'en-US';
-  u.pitch = o.pitch ?? 1.7; u.rate = o.rate ?? 1.25; u.volume = 1;
+  if (voice) u.voice = voice; // unset = the platform's default English voice
+  u.lang = 'en-US'; u.pitch = o.pitch ?? 1.7; u.rate = o.rate ?? 1.25; u.volume = 1;
   speechSynthesis.cancel(); speechSynthesis.speak(u);
   return u;
 }
+/* an English line; o.male prefers a male English voice */
+function say(text, o = {}) {
+  const ens = VOICES.filter(v => /^en/i.test(v.lang)), us = v => /en[-_]US/i.test(v.lang);
+  return speak(text, o, (o.male && (ens.find(v => us(v) && MALE.test(v.name)) || ens.find(v => MALE.test(v.name)))) || ens.find(us) || ens[0]);
+}
+/* Japanese shouts are deliberately spoken as their punctuation only, the same on every platform:
+   'どっち!?' → "Exclamation point! Question mark!" (what an English voice does when handed Japanese text) */
+const PUNCT = { '!': 'Exclamation point!', '！': 'Exclamation point!', '?': 'Question mark!', '？': 'Question mark!' };
+function shout(ja, o = {}) { return speak((ja.match(/[!?！？]/g) || []).map(c => PUNCT[c]).join(' '), o); }
 /* speak and wait until the line finishes (falls back to a fixed time if speech is off or never reports back) */
-function sayWait(en, o, ms) {
+function sayWait(text, o, ms) {
   return new Promise(res => {
     let done = false; const fin = () => { if (!done) { done = true; res(); } };
-    const u = say(null, en, o);
+    const u = say(text, o);
     if (u) { u.onend = fin; u.onerror = fin; setTimeout(fin, ms * 1.8); } else setTimeout(fin, ms);
   });
 }
@@ -1143,7 +1147,7 @@ async function jackpot(o, n, from, to) {
   if (!MUS.fever) { MUS.fever = true; MUS.step = 0; } // don't restart the drop if it already hit (coin toss)
   flash(); invert(); shake(1.6); hueTrip(); speed(true);
   S.explode(); S.fanfare(); S.jingle(20, 1); S.rattle(1300, 80);
-  say(o.ja, o.en);
+  shout(o.ja);
   FX.burst(cx, cy, 220); FX.cannons(50); FX.pour(170, r);
   FX.ring(cx, cy, '#fff', 600, 16);
   setTimeout(() => FX.ring(cx, cy, '#ff0', 500, 10), 120);
@@ -1181,7 +1185,7 @@ async function scene1() {
   };
   const reach = () => {
     sc.classList.add('alert'); st.textContent = 'リーチ!! REACH!!'; reels[2].classList.add('aura'); speed(true);
-    cutin('mika', 'リーチ!!', 'red'); say('リーチ!', 'Reach!'); S.laser(); MUS.bpm = 176;
+    cutin('mika', 'リーチ!!', 'red'); shout('リーチ!'); S.laser(); MUS.bpm = 176;
     const [x1, y1] = framePt(.2, .3), [x2, y2] = framePt(.8, .72);
     word('リーチ!!', x1, y1, { size: 9 }); setTimeout(() => word('激アツ!!', x2, y2, { size: 9 }), 150);
     CHAT.hype('slots', 4, 100);
@@ -1237,7 +1241,7 @@ async function scene2() {
     word(pick(['ドーン!!', 'ドスン!!', 'バーン!!', 'ズシン!!']), sx, sy - 50, { size: 6 + k * .5 });
     shake(.35 + k * .12);
   };
-  say('どすこい!', 'Dosukoi!');
+  shout('どすこい!');
   setTimeout(() => cutin('sumo', 'どすこい!!', 'blue'), 1200);
   CHAT.hype('sumo', 5, 350);
   const fw = setInterval(() => { const r = GF(); FX.firework(rand(r.left + r.width * .1, r.right - r.width * .1), r.bottom, rand(r.top + r.height * .05, r.top + r.height * .3)); }, 420);
@@ -1253,7 +1257,7 @@ async function scene2() {
       plank.setAttribute('transform', `translate(400 380) rotate(${th})`);
       return false;
     }
-    if (!launched) { launched = true; S.zip(); S.boom(1); say('よこづな!', 'Yokozuna!'); }
+    if (!launched) { launched = true; S.zip(); S.boom(1); shout('よこづな!'); }
     th += (15 - th) * .4; plank.setAttribute('transform', `translate(400 380) rotate(${th})`);
     const [rx, ry] = seat(200, th); place(B, rx, ry, 0);
     const e = 1 - Math.pow(1 - Math.min(1, (t - 3000) / 400), 3);
@@ -1295,7 +1299,7 @@ async function scene3() {
     g.style.setProperty('--h', (rand(0, 360) | 0) + 'deg'); g.style.transform = r.style.transform;
     r.parentNode.insertBefore(g, r); setTimeout(() => g.remove(), 360);
   };
-  say('どっち!?', 'Which way?!');
+  shout('どっち!?');
   setTimeout(() => cutin('runner', '全力疾走!!', 'green'), 900);
   CHAT.hype('rev', 5, 300);
   await frames(t => {
@@ -1315,7 +1319,7 @@ async function scene3() {
   });
   if (eng) eng.forEach(o => o.stop());
   which.style.display = 'none'; hl.classList.remove('flip');
-  say('いけー!', 'Go go go!'); S.zip(); S.boom(.6);
+  shout('いけー!'); S.zip(); S.boom(.6);
   bl.classList.remove('on'); br.classList.add('on', 'win'); br.textContent = '★ JACKPOT ★';
   r.style.transform = 'scaleX(1)'; void r.offsetWidth;
   r.style.transition = 'transform .26s ease-in'; r.style.transform = 'translateX(120cqw) scaleX(1)';
@@ -1350,7 +1354,7 @@ async function scene4() {
 
   // the flip
   bub.textContent = 'Call it.';
-  say(null, 'Call it.', STRANGER);
+  say('Call it.', STRANGER);
   S.heartbeat(3);
   const sr = sc.getBoundingClientRect(), W0 = sr.width, H0 = sr.height, rEnd = .19 * Math.min(W0, H0), lift = H0 * .27;
   vig.style.setProperty('--rw', (1.25 * W0) + 'px'); vig.style.setProperty('--rh', (1.25 * H0) + 'px'); vig.style.opacity = 1;
@@ -1389,12 +1393,12 @@ async function scene5(total) {
   fever(true);
   $('#checkAmt').textContent = fmt(0); $('#s5amt').textContent = fmt(total);
   setTimeout(() => cutin('god', '神降臨!!', 'gold'), 60);
-  say('かみ、こうりん!', 'Divine descent!');
+  shout('かみ、こうりん!');
   S.choir(7); S.heavenly(); setTimeout(S.heavenly, 1000);
   const rainT = setInterval(() => FX.rain(5, ['coin', 'bill', 'petal', 'conf', 'ball', 'heart', 'star']), 70);
   await wait(1400);
   countTo($('#checkAmt'), 0, total, 1100, true); S.jingle(30, 1.2);
-  say(null, 'Hallelujah!', { pitch: 1.3, rate: .9 });
+  say('Hallelujah!', { pitch: 1.3, rate: .9 });
   await wait(500);
   flash(); shake(1.2); hueTrip(); S.explode(); S.fanfare();
   const r = GF(), ck = $('#s5 .check').getBoundingClientRect();
@@ -1403,7 +1407,7 @@ async function scene5(total) {
   CHAT.hype('god', 14, 110); setTimeout(() => CHAT.rain(fmt(total)), 900);
   restart($('#bal'), 'bump');
   await wait(1400);
-  say(null, 'Trevor wins big!', { pitch: 1.2, rate: 1 });
+  say('Trevor wins big!', { pitch: 1.2, rate: 1 });
   await wait(1200);
   $('#replay').style.display = 'block';
   setTimeout(() => clearInterval(rainT), 3500);
@@ -1419,11 +1423,11 @@ async function scene5(total) {
    RUN
    ===================================================================== */
 const BASE = 12;
-const FIRST = { kanji: '大当たり!!', tier: 'BIG WIN', sub: 'TRIPLE SEVENS!!!', ja: 'おおあたり!', en: 'Jackpot!' };
+const FIRST = { kanji: '大当たり!!', tier: 'BIG WIN', sub: 'TRIPLE SEVENS!!!', ja: 'おおあたり!' };
 const ROUNDS = [
-  { id: '#s2', play: scene2, game: 'Sumo Seesaw', mult: 3, kanji: '確変突入!!', tier: 'MEGA WIN', sub: 'SEESAW SUPREMACY! · 3× MULTIPLIER', ja: 'かくへん とつにゅう!', en: 'Mega win!', hype: 'sumo' },
-  { id: '#s3', play: scene3, game: 'Leg Rev', mult: 2.5, kanji: '激アツ!!', tier: 'ULTRA WIN', sub: 'CORRECT DIRECTION! · 2.5× MULTIPLIER', ja: 'げきあつ!', en: 'Ultra win!', hype: 'rev' },
-  { id: '#s4', play: scene4, game: 'Coin Flip', mult: 2.4, kanji: '超・大当たり!!', tier: 'INSANE WIN', sub: 'THE COIN HAS SPOKEN. · 2.4× MULTIPLIER', ja: 'ちょう おおあたり!', en: 'Insane win!', hype: 'coin' },
+  { id: '#s2', play: scene2, game: 'Sumo Seesaw', mult: 3, kanji: '確変突入!!', tier: 'MEGA WIN', sub: 'SEESAW SUPREMACY! · 3× MULTIPLIER', ja: 'かくへん とつにゅう!', hype: 'sumo' },
+  { id: '#s3', play: scene3, game: 'Leg Rev', mult: 2.5, kanji: '激アツ!!', tier: 'ULTRA WIN', sub: 'CORRECT DIRECTION! · 2.5× MULTIPLIER', ja: 'げきあつ!', hype: 'rev' },
+  { id: '#s4', play: scene4, game: 'Coin Flip', mult: 2.4, kanji: '超・大当たり!!', tier: 'INSANE WIN', sub: 'THE COIN HAS SPOKEN. · 2.4× MULTIPLIER', ja: 'ちょう おおあたり!', hype: 'coin' },
 ];
 async function run() {
   if (running) return; running = true;
